@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="最小生成树相关概念 生成子图 在保留所有节点的基础上，删除图上的若干条边，余下的部分称为原图的生成子图   生成树 无向图的满足树的性质的生成子图 最小生成树    性质 任意一棵最小生成树一定包含无向图中权值最小的边   充要条件   Kruskal12345678910111213141516171819202122232425262728struct Edge&amp;#123;    int u,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/06/05/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最小生成树相关概念 生成子图 在保留所有节点的基础上，删除图上的若干条边，余下的部分称为原图的生成子图   生成树 无向图的满足树的性质的生成子图 最小生成树    性质 任意一棵最小生成树一定包含无向图中权值最小的边   充要条件   Kruskal12345678910111213141516171819202122232425262728struct Edge&amp;#123;    int u,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-05T11:34:17.761Z">
+<meta property="article:modified_time" content="2021-06-06T14:43:55.242Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-最小生成树" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/05/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" class="article-date">
+  <time class="dt-published" datetime="2021-06-05T11:34:17.761Z" itemprop="datePublished">2021-06-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h3><h4 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h4><ul>
+<li>生成子图<ul>
+<li>在保留所有节点的基础上，删除图上的若干条边，余下的部分称为原图的生成子图</li>
+</ul>
+</li>
+<li>生成树<ul>
+<li>无向图的满足树的性质的生成子图</li>
+<li>最小生成树</li>
+</ul>
+</li>
+</ul>
+<h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>任意一棵最小生成树一定包含无向图中权值最小的边</li>
+<li></li>
+</ul>
+<h4 id="充要条件"><a href="#充要条件" class="headerlink" title="充要条件"></a>充要条件</h4><ul>
+<li></li>
+</ul>
+<h4 id="Kruskal"><a href="#Kruskal" class="headerlink" title="Kruskal"></a>Kruskal</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> u, v, w;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> Edge&amp; edge)<span class="keyword">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> w &lt; e.w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;e[maxm];</span><br><span class="line"><span class="keyword">int</span> pa[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> pa[x] == x ? x : pa[x] = <span class="built_in">find</span>(pa[x]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; maxn; i++)&#123;</span><br><span class="line">        pa[i] = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;e[i].u, &amp;e[i].v, &amp;e[i].w);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">sort</span>(e, e + m);</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">find</span>(e[i].u) != <span class="built_in">find</span>(e[i].v))&#123;</span><br><span class="line">            ans += e[i].w;</span><br><span class="line">            pa[e[i].u] = e[i].v;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>基于结构体的排序</li>
+<li>利用并查集维护图的连通性</li>
+</ul>
+<h4 id="Prim"><a href="#Prim" class="headerlink" title="Prim"></a>Prim</h4><ul>
+<li><p>原理</p>
+<ul>
+<li>Prim基于最小生成树的性质</li>
+<li>本质也是贪心</li>
+</ul>
+</li>
+<li><p>流程</p>
+<ul>
+<li>维护当前最小生成树上的节点集合T，剩余节点集合为S</li>
+<li>找出所有跨越两个集合的边中，权值最小的边</li>
+<li>将这条边加入最小生成树上，并将对应的点从S集合中删除，加入T集合中</li>
+</ul>
+</li>
+<li><p>实现</p>
+<ul>
+<li>邻接矩阵或邻接表存图</li>
+<li>维护S集合里每个节点到T集合的最短距离数组</li>
+<li>循环遍历数组，找出最短距离最小的节点，将其移至T集合，更新最短距离数组</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> v, w;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> Edge&amp; edge)<span class="keyword">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> w &lt; e.w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">vector&lt;Edge&gt;G[maxn];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, m;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> u, v, w;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;u, &amp;v, &amp;w);</span><br><span class="line">        G[u - <span class="number">1</span>].<span class="built_in">push_back</span>((Edge)&#123;v - <span class="number">1</span>, w&#125;);</span><br><span class="line">        G[v - <span class="number">1</span>].<span class="built_in">push_back</span>((Edge)&#123;u - <span class="number">1</span>, w&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        dist[i] = <span class="number">0x3fffffff</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    vis[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">find</span>(e[i].u) != <span class="built_in">find</span>(e[i].v))&#123;</span><br><span class="line">            ans += e[i].w;</span><br><span class="line">            pa[e[i].u] = e[i].v;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="keyword">int</span>)G[i].<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        dist[G[<span class="number">1</span>][i].v] = <span class="built_in">min</span>(dist[G[<span class="number">1</span>][i].v], G[<span class="number">1</span>][i].v);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">        <span class="keyword">int</span> u = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">0</span>; v &lt; n; v++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!vis[v] &amp;&amp; (!u || dist[u] &gt; dist[v]))&#123;</span><br><span class="line">                u = v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ans += dist[u];</span><br><span class="line">        vis[u] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> cnt = <span class="number">0</span>; cnt &lt; (<span class="keyword">int</span>)G[u].<span class="built_in">size</span>(); cnt++)&#123;</span><br><span class="line">            dist[G[u][cnt].v] = <span class="built_in">min</span>(dist[G[u][cnt].v], G[u][cnt].w);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/06/05/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" data-id="ckuf2b5wr0008lwv8d1cy3nwo" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/06/06/%E5%BE%AE%E7%94%9F%E7%89%A9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/06/01/%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSP-S/">CSP-S</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E8%80%83/" rel="tag">备考</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 10px;">二分</a> <a href="/tags/%E5%A4%87%E8%80%83/" style="font-size: 10px;">备考</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/06/My-New-Post/">P2678题解</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/05/hello-world/">Hello LaTeX</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/14/CSP-JS%20%E7%AC%AC%E4%B8%80%E8%BD%AE%E7%9F%A5%E8%AF%86%E7%82%B9%E9%80%89/">CSP-J/S 第一轮知识点选</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/12/%E6%9C%80%E7%9F%AD%E8%B7%AF%E2%85%A0/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/06/%E5%BE%AE%E7%94%9F%E7%89%A9/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

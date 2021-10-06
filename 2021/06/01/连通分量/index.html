@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="连通分量概念 连通分量是无向图的一种极大子图 同一连通分量中的任意两点可以互相到达 不同连通分量中的任意两点不可互相到达  计算方法 Flood fill算法 遍历所有的节点，从尚未“涂色”的节点出发 将所有与起始节点连通的节点“上色” 使用BFS或DFS   并查集维护法 依次添加每条边 将边连接的两点所在的集合合并 适用于动态维护连通分量的问题    拓扑（Topology）排序有向无环图 有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/06/01/%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="连通分量概念 连通分量是无向图的一种极大子图 同一连通分量中的任意两点可以互相到达 不同连通分量中的任意两点不可互相到达  计算方法 Flood fill算法 遍历所有的节点，从尚未“涂色”的节点出发 将所有与起始节点连通的节点“上色” 使用BFS或DFS   并查集维护法 依次添加每条边 将边连接的两点所在的集合合并 适用于动态维护连通分量的问题    拓扑（Topology）排序有向无环图 有">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-06-01T06:46:51.597Z">
+<meta property="article:modified_time" content="2021-06-01T12:54:50.035Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-连通分量" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/01/%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/" class="article-date">
+  <time class="dt-published" datetime="2021-06-01T06:46:51.597Z" itemprop="datePublished">2021-06-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="连通分量"><a href="#连通分量" class="headerlink" title="连通分量"></a>连通分量</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li>连通分量是<strong>无向图</strong>的一种<strong>极大</strong>子图</li>
+<li>同一连通分量中的任意两点可以互相到达</li>
+<li>不同连通分量中的任意两点不可互相到达</li>
+</ul>
+<h3 id="计算方法"><a href="#计算方法" class="headerlink" title="计算方法"></a>计算方法</h3><ul>
+<li>Flood fill算法<ul>
+<li>遍历所有的节点，从尚未“涂色”的节点出发</li>
+<li>将所有与起始节点连通的节点“上色”</li>
+<li>使用BFS或DFS</li>
+</ul>
+</li>
+<li>并查集维护法<ul>
+<li>依次添加每条边</li>
+<li>将边连接的两点所在的集合合并</li>
+<li>适用于动态维护连通分量的问题</li>
+</ul>
+</li>
+</ul>
+<h2 id="拓扑（Topology）排序"><a href="#拓扑（Topology）排序" class="headerlink" title="拓扑（Topology）排序"></a>拓扑（Topology）排序</h2><h3 id="有向无环图"><a href="#有向无环图" class="headerlink" title="有向无环图"></a>有向无环图</h3><ul>
+<li>有向无环图，简称D(irected) A(cyclic) G(raph)</li>
+<li>点之间有传递性的大小关系</li>
+</ul>
+<h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><ul>
+<li>图上节点的排序<ul>
+<li>若节点u能到达节点v，则u&gt;v</li>
+<li>只有DAG可以进行拓扑排序</li>
+</ul>
+</li>
+</ul>
+<h3 id="计算方法-1"><a href="#计算方法-1" class="headerlink" title="计算方法"></a>计算方法</h3><ol>
+<li>将所有入度为0的点加入队列</li>
+<li>每次取队头结点，删除从该节点连出去的所有边</li>
+<li>若删除某条边后，此边指向的节点入度为0，则将该节点加入队列末尾</li>
+</ol>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;<span class="keyword">int</span>&gt;G[maxn];</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">int</span> d_in[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TopologySort</span><span class="params">()</span></span>&#123;</span><br><span class="line">    queue&lt;<span class="keyword">int</span>&gt;Q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!d_in[i])&#123;</span><br><span class="line">            Q.<span class="built_in">push</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!Q.empty)&#123;</span><br><span class="line">        <span class="keyword">int</span> q = Q.<span class="built_in">front</span>();</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt;&amp; g = G[q];</span><br><span class="line">        cout &lt;&lt; q;</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; g.size; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!--d_in[g[i]])&#123;</span><br><span class="line">                Q.<span class="built_in">push</span>(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">while</span>(m--)&#123;</span><br><span class="line">        <span class="keyword">int</span> u, v;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;u, &amp;v);</span><br><span class="line">        G[u - <span class="number">1</span>].<span class="built_in">push_back</span>(v - <span class="number">1</span>);</span><br><span class="line">        d_in[v]++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>$ $</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/06/01/%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F/" data-id="ckuf2b5xa000glwv85mxq4wc8" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/06/05/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/05/23/%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSP-S/">CSP-S</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E8%80%83/" rel="tag">备考</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 10px;">二分</a> <a href="/tags/%E5%A4%87%E8%80%83/" style="font-size: 10px;">备考</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/06/My-New-Post/">P2678题解</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/05/hello-world/">Hello LaTeX</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/14/CSP-JS%20%E7%AC%AC%E4%B8%80%E8%BD%AE%E7%9F%A5%E8%AF%86%E7%82%B9%E9%80%89/">CSP-J/S 第一轮知识点选</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/12/%E6%9C%80%E7%9F%AD%E8%B7%AF%E2%85%A0/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/06/%E5%BE%AE%E7%94%9F%E7%89%A9/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

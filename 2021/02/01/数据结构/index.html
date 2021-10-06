@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="数据结构定义研究数据在内存里的存储方式 作用更好的存储信息，维护数据（在更新数据时，更新关注的信息），找到数据与数据间的关系与逻辑（增删查改） 数组：大量存放数据，随机内存访问 知识大纲 STL容器  二叉树  并查集  堆  BST（二叉查找树）  tire  hash  graph   STL容器内存空间 常数空间  堆空间（内存空间限制）运行前清零（全局变量，STL容器）优点：清零，内存较大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2021/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="数据结构定义研究数据在内存里的存储方式 作用更好的存储信息，维护数据（在更新数据时，更新关注的信息），找到数据与数据间的关系与逻辑（增删查改） 数组：大量存放数据，随机内存访问 知识大纲 STL容器  二叉树  并查集  堆  BST（二叉查找树）  tire  hash  graph   STL容器内存空间 常数空间  堆空间（内存空间限制）运行前清零（全局变量，STL容器）优点：清零，内存较大">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-02-01T14:16:09.258Z">
+<meta property="article:modified_time" content="2021-08-11T19:23:59.292Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-数据结构" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="article-date">
+  <time class="dt-published" datetime="2021-02-01T14:16:09.258Z" itemprop="datePublished">2021-02-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>研究数据在内存里的存储方式</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>更好的存储信息，维护数据（在更新数据时，更新关注的信息），找到数据与数据间的关系与逻辑<strong>（增删查改）</strong></p>
+<p>数组：大量存放数据，随机内存访问</p>
+<h3 id="知识大纲"><a href="#知识大纲" class="headerlink" title="知识大纲"></a>知识大纲</h3><ol>
+<li><p>STL容器</p>
+</li>
+<li><p>二叉树</p>
+</li>
+<li><p>并查集</p>
+</li>
+<li><p>堆</p>
+</li>
+<li><p>BST（二叉查找树）</p>
+</li>
+<li><p>tire</p>
+</li>
+<li><p>hash</p>
+</li>
+<li><p>graph</p>
+</li>
+</ol>
+<h3 id="STL容器"><a href="#STL容器" class="headerlink" title="STL容器"></a>STL容器</h3><h4 id="内存空间"><a href="#内存空间" class="headerlink" title="内存空间"></a>内存空间</h4><ol>
+<li><p>常数空间</p>
+</li>
+<li><p>堆空间（内存空间限制）运行前清零（全局变量，<strong>STL容器</strong>）优点：清零，内存较大，可在函数内使用；缺点：时间问题</p>
+</li>
+<li><p>栈空间（默认8MB）</p>
+</li>
+</ol>
+<h4 id="1-vector（变长数组）"><a href="#1-vector（变长数组）" class="headerlink" title="1.vector（变长数组）"></a>1.vector（变长数组）</h4><ol>
+<li>不定长</li>
+<li>连续分布</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">int</span> num = &#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">7</span>&#125;;</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt;a;</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt;<span class="built_in">b</span>(<span class="number">10</span>);</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt;<span class="built_in">c</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt;<span class="built_in">d</span>(num + <span class="number">1</span>, num + <span class="number">4</span>)</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">out</span><span class="params">(vector a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        cout &lt;&lt; a[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cout &lt;&lt; a.<span class="built_in">size</span>();<span class="comment">//output:0</span></span><br><span class="line">    cout &lt;&lt; b.<span class="built_in">size</span>();<span class="comment">//output:10</span></span><br><span class="line">    a.<span class="built_in">push_back</span>(<span class="number">1</span>);<span class="comment">//加入数据</span></span><br><span class="line">    a.<span class="built_in">push_back</span>(<span class="number">4</span>);</span><br><span class="line">    a.<span class="built_in">push_back</span>(<span class="number">3</span>);</span><br><span class="line">    a.<span class="built_in">push_back</span>(<span class="number">4</span>);</span><br><span class="line">    b = a;</span><br><span class="line">    <span class="built_in">out</span>(a);<span class="comment">//output:1 4 3 4</span></span><br><span class="line">    a.<span class="built_in">pop_back</span>();</span><br><span class="line">    <span class="built_in">out</span>(a);<span class="comment">//output:1 4 3</span></span><br><span class="line">    <span class="built_in">out</span>(b);<span class="comment">//output:1 4 3 4 0 0 0 0 0 0</span></span><br><span class="line">    cout &lt;&lt; (a &gt; b : <span class="string">&quot;&gt;&quot;</span> : <span class="string">&quot;&lt;&quot;</span>);<span class="comment">//output:&lt;</span></span><br><span class="line">    <span class="built_in">out</span>(c);<span class="comment">//output:1 2</span></span><br><span class="line">    <span class="built_in">out</span>(d);<span class="comment">//output:4 2 8</span></span><br><span class="line">    cout &lt;&lt; a.<span class="built_in">front</span>() &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; a.<span class="built_in">end</span>()<span class="comment">//output:1 3</span></span><br><span class="line">    <span class="built_in">sort</span>(a.<span class="built_in">begin</span>(), a.<span class="built_in">end</span>());<span class="comment">//vector is a class,it don&#x27;t have pointer</span></span><br><span class="line">    <span class="built_in">out</span>(a);<span class="comment">//output:1 3 4</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt;::iterator it = a.begin;</span><br><span class="line">    <span class="keyword">while</span>(it != a.<span class="built_in">end</span>())&#123;</span><br><span class="line">        cout &lt;&lt; *it &lt;&lt; endl;</span><br><span class="line">        it++;</span><br><span class="line">    &#125;<span class="comment">//output:1 3 4</span></span><br><span class="line">    it = a.<span class="built_in">end</span>();</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        it--;</span><br><span class="line">        cout &lt;&lt; *it &lt;&lt; endl;</span><br><span class="line">    &#125;<span class="keyword">while</span>(it != a.<span class="built_in">begin</span>());</span><br><span class="line">    a.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="built_in">out</span>(a);<span class="comment">//output:none</span></span><br><span class="line">    b.<span class="built_in">resize</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">out</span>(b)<span class="comment">//output:none</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原理：先申请k个内存，当数据越界时，再申请2k（or1.5k）的内存，将原内存复制到另一个内存空间。</p>
+<h4 id="2-deque（双端队列）"><a href="#2-deque（双端队列）" class="headerlink" title="2.deque（双端队列）"></a>2.deque（双端队列）</h4><h4 id="3-priority-queue"><a href="#3-priority-queue" class="headerlink" title="3.priority_queue"></a>3.priority_queue</h4><ul>
+<li>动态分布大小，堆空间，具有<strong>优先级</strong>关系的队列</li>
+<li>复杂度：增加元素O(logn)，<strong>不支持随机访问</strong>，需定义</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> Point &amp;p) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> x &lt; p.x || (x == p.x &amp;&amp; y &lt; p.y);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">1</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">7</span>&#125;</span><br><span class="line">priority_queue&lt;T, vector&lt;T&gt;, greater&lt;T&gt; &gt;que;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    priority_queue&lt;<span class="keyword">int</span>&gt;que;</span><br><span class="line">    priority_queue&lt;<span class="keyword">int</span>, vector&lt;<span class="keyword">int</span>&gt; greater&lt;<span class="keyword">int</span>&gt; &gt;pq;</span><br><span class="line">    priority_queue&lt;Point&gt; Pointq;</span><br><span class="line">    Pointq = </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++)&#123;</span><br><span class="line">        que.<span class="built_in">push</span>(a[i]);</span><br><span class="line">        pq.<span class="built_in">push</span>(a[i]);</span><br><span class="line">        cout &lt;&lt; que.<span class="built_in">top</span>() &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//output:1 4 4 8 8 8</span></span><br><span class="line">    cout &lt;&lt; que.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++)&#123;</span><br><span class="line">        cout &lt;&lt; que.<span class="built_in">top</span>() &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        que.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;<span class="comment">//output:8 7 5 4 2 1</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++)&#123;</span><br><span class="line">        cout &lt;&lt; pq.<span class="built_in">top</span>() &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        pq.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;<span class="comment">//output:1 2 4 5 8 7</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-set"><a href="#4-set" class="headerlink" title="4.set"></a>4.set</h4><ul>
+<li>动态分布大小，<strong>无重复</strong>元素的有序集合</li>
+<li>使用&lt;比较大小</li>
+<li>使用堆空间</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    multiset&lt;<span class="keyword">int</span>&gt;mset;<span class="comment">//multiset允许重复元素</span></span><br><span class="line">    set&lt;<span class="keyword">int</span>&gt; bst;</span><br><span class="line">    bst.<span class="built_in">insert</span>(<span class="number">1</span>);</span><br><span class="line">    mset.<span class="built_in">insert</span>(<span class="number">1</span>);</span><br><span class="line">    bst.<span class="built_in">insert</span>(<span class="number">2</span>);</span><br><span class="line">    mset.<span class="built_in">insert</span>(<span class="number">2</span>);</span><br><span class="line">    bst.<span class="built_in">insert</span>(<span class="number">2</span>);</span><br><span class="line">    mset.<span class="built_in">insert</span>(<span class="number">2</span>);</span><br><span class="line">    bst.<span class="built_in">insert</span>(<span class="number">3</span>);</span><br><span class="line">    mset.<span class="built_in">insert</span>(<span class="number">3</span>);</span><br><span class="line">    cout &lt;&lt; bst.<span class="built_in">size</span>();<span class="comment">//output:3</span></span><br><span class="line">    cout &lt;&lt; mset.<span class="built_in">size</span>();<span class="comment">//output:4</span></span><br><span class="line">    cout &lt;&lt; *bst.<span class="built_in">begin</span>() &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; *(--bst.<span class="built_in">end</span>());</span><br><span class="line">    mset.<span class="built_in">erase</span>(<span class="number">2</span>);</span><br><span class="line">    cout &lt;&lt; mset.<span class="built_in">size</span>();<span class="comment">//output:2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-pair"><a href="#5-pair" class="headerlink" title="5.pair"></a>5.pair</h4><ul>
+<li>先比较第一关键字，第一关键字相等则比较第二关键字</li>
+<li>使用make_pair()来赋值一个pair类</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;utility&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    pair&lt;string, <span class="keyword">int</span>&gt; p = <span class="built_in">make_pair</span>(<span class="string">&quot;hello&quot;</span>, <span class="number">123</span>);</span><br><span class="line">    cout &lt;&lt; p.first &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; p.second &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-map"><a href="#6-map" class="headerlink" title="6.map"></a>6.map</h4><ul>
+<li>动态分布大小的，无重复key的映射关系</li>
+<li>key有序排列，通过&lt;运算符比较大小关系</li>
+<li>插入或访问的复杂度都是O(logn)</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    map&lt;string, <span class="keyword">int</span>&gt;id;<span class="comment">//map&lt;key, value&gt;</span></span><br><span class="line">    id[<span class="string">&quot;abc&quot;</span>] = <span class="number">1</span>;</span><br><span class="line">    id[<span class="string">&quot;acb&quot;</span>] = <span class="number">2</span>;</span><br><span class="line">    cout &lt;&lt; id[<span class="string">&quot;abc&quot;</span>] &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; id[<span class="string">&quot;a&quot;</span>];<span class="comment">//output:1 0</span></span><br><span class="line">    <span class="keyword">for</span>(map&lt;string, <span class="keyword">int</span>&gt;::iterator it = id.<span class="built_in">begin</span>(); it != id.<span class="built_in">end</span>(); it++)&#123;</span><br><span class="line">        cout &lt;&lt; it-&gt;first &lt;&lt; <span class="string">&quot;:&quot;</span> &lt;&lt; it-&gt;second &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//output:a:0 abc:1 acb:2</span></span><br><span class="line">    id.<span class="built_in">erase</span>(id.<span class="built_in">begin</span>());</span><br><span class="line">    <span class="keyword">for</span>(map&lt;string, <span class="keyword">int</span>&gt;::iterator it = id.<span class="built_in">begin</span>(); it != id.<span class="built_in">end</span>(); it++)&#123;</span><br><span class="line">        cout &lt;&lt; it-&gt;first &lt;&lt; <span class="string">&quot;:&quot;</span> &lt;&lt; it-&gt;second &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;<span class="comment">//output:abc:1 acb:2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" data-id="ckuf2b5wg0004lwv87m37117w" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/05/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/01/%E6%A0%91%EF%BC%8C%20%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%8E%E5%B9%B6%E6%9F%A5%E9%9B%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSP-S/">CSP-S</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%88%86/" rel="tag">二分</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%A4%87%E8%80%83/" rel="tag">备考</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E4%BA%8C%E5%88%86/" style="font-size: 10px;">二分</a> <a href="/tags/%E5%A4%87%E8%80%83/" style="font-size: 10px;">备考</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/06/My-New-Post/">P2678题解</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/05/hello-world/">Hello LaTeX</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/14/CSP-JS%20%E7%AC%AC%E4%B8%80%E8%BD%AE%E7%9F%A5%E8%AF%86%E7%82%B9%E9%80%89/">CSP-J/S 第一轮知识点选</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/12/%E6%9C%80%E7%9F%AD%E8%B7%AF%E2%85%A0/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/06/%E5%BE%AE%E7%94%9F%E7%89%A9/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
