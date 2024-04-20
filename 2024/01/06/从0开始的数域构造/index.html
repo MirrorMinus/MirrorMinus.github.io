@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mathematical analysis,Dedekind cut,notes,abstract algebra," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="PMA笔记之从1开始的数域构造  前言：  为什么不是从0开始？首先,我对自然数的印象就是不包括0的,而我想从自然数开始.其次,从1开始表示读者最好有一点高中数学基础.我也不清楚需要什么基础,但是不建议初中生在没学过高中数学的情况下读这篇文章. 这是Evarine看Rudin的Principles of Mathematical Analysis,也就是大家所说Baby Rudin的笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从1开始的数域构造">
+<meta property="og:url" content="http://example.com/2024/01/06/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84%E6%95%B0%E5%9F%9F%E6%9E%84%E9%80%A0/index.html">
+<meta property="og:site_name" content="Evarine&#39;s science garden">
+<meta property="og:description" content="PMA笔记之从1开始的数域构造  前言：  为什么不是从0开始？首先,我对自然数的印象就是不包括0的,而我想从自然数开始.其次,从1开始表示读者最好有一点高中数学基础.我也不清楚需要什么基础,但是不建议初中生在没学过高中数学的情况下读这篇文章. 这是Evarine看Rudin的Principles of Mathematical Analysis,也就是大家所说Baby Rudin的笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-01-06T07:53:00.387Z">
+<meta property="article:modified_time" content="2024-03-03T06:58:50.203Z">
+<meta property="article:author" content="Evarine Lin">
+<meta property="article:tag" content="mathematical analysis">
+<meta property="article:tag" content="Dedekind cut">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="abstract algebra">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://example.com/2024/01/06/从0开始的数域构造/"/>
+
+
+
+
+
+  <title>从1开始的数域构造 | Evarine's science garden</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Evarine's science garden</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/06/%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84%E6%95%B0%E5%9F%9F%E6%9E%84%E9%80%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Evarine's science garden">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">从1开始的数域构造</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2024-01-06T15:53:00+08:00">
+                2024-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mathematic/" itemprop="url" rel="index">
+                    <span itemprop="name">mathematic</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mathematic/Principle/" itemprop="url" rel="index">
+                    <span itemprop="name">Principle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="pma笔记之从1开始的数域构造">PMA笔记之从1开始的数域构造</h1>
+<blockquote>
+<p>前言：</p>
+<ol type="1">
+<li>为什么不是从0开始？首先,我对自然数的印象就是不包括0的,而我想从自然数开始.其次,从1开始表示读者最好有一点高中数学基础.我也不清楚需要什么基础,但是不建议初中生在没学过高中数学的情况下读这篇文章.</li>
+<li>这是Evarine看Rudin的<code>Principles of Mathematical Analysis</code>,也就是大家所说Baby Rudin的笔记.所以思路基本遵循PMA.或者说,这就是PMA第一章的读书笔记,尽管由于讲了过多的Peano算数和原著关系已经不大了.</li>
+</ol>
+</blockquote>
+<p>你是一名普通的高中生.你觉得老师对于数的定义太不严谨了,或者在与认为0.999...不等于1的民科对线时被气疯了.于是你想自己搓一个好看的数系.</p>
+<p>你的思想政治知识告诉你,万事都应该有个基础,于是你先给出了一个元素：1.</p>
+<h2 id="chapter-1-从1到mathbb-npeano公理">Chapter 1 从1到<span class="math inline">\(\mathbb N\)</span>：Peano公理</h2>
+<p>你知道正整数之间相差1.也就是说,正整数都可以从1构造出来.为此,你决定使用你的算法知识：递归来描述这种性质.</p>
+<p>首先,1是正整数.也就是说,<span class="math display">\[\mathrm N1:1 \in \mathbb N\]</span></p>
+<p>然后,1+1是正整数.因为加法需要在至少自然数中定义才能封闭,所以你想起了编程常用的i++,认为可以仿照++做一个函数.</p>
+<p>你给它取名为succ.并规定<span class="math display">\[\mathrm N2: n \in \mathbb N \rightarrow  succ(n) \in \mathbb {N}\]</span></p>
+<p>但是你并没有想着直接构造出整数.所以你不希望有某个正整数+1等于1.于是你规定<span class="math display">\[\mathrm N3: \forall n \in \mathbb N, succ(n) \neq 1\]</span></p>
+<p>你认为succ函数应该是一个单射<del>不然之后Chapter4没有逆元了</del>.于是你规定<span class="math display">\[\mathrm N4: \forall a, b\in \mathbb N, succ(a)=succ(b) \rightarrow a=b\]</span></p>
+<blockquote>
+<p>也许你认为这不太严谨,鉴于你并没有定义什么是&quot;<span class="math inline">\(=\)</span>&quot;.那么可以尝试使用这个定义<span class="math inline">\(:(a = b) \iff (a \in S \iff b \in S)\)</span>就像接下来第五条公理一样.注意这其中表明的思想:物的存在是其所做.或者你也可以叫它&quot;鸭子理论&quot;</p>
+</blockquote>
+<p>你认为正整数都应该由1得来,而不是另有一条链,比如<span class="math inline">\(S = \{i, succ(i), succ(succ(i)),...\}(i \notin \mathbb N), S \cup \mathbb N\)</span>明显不应该是你希望构造出的数系.也就是说,由1出发可以通往所有正整数.为了达成这个目标,你想起了数学归纳法,但是你认为谓词是个麻烦的东西,而且你自己也不清楚自己有没有掌握,也就是<span class="math display">\[ \mathrm N5: (1 \in S , \forall n \in \mathbb N, n \in  S \rightarrow succ(n) \in S ) \rightarrow \mathbb N \subset S\]</span></p>
+<p>这样以后,你认为你已经完成了对自然数的定义.但是你认为只有一批数是不够的.还需要对这些数施加除了succ以外的运算,比如加法,比如乘法.</p>
+<h2 id="chapter-2-加法与乘法">Chapter 2 加法与乘法</h2>
+<p>对于加法,你准备按照类似定义自然数的方法定义它.首先,<span class="math display">\[A1:\forall n \in \mathbb N, 1+n=succ(n)\]</span>.当然.这本来是函数<span class="math inline">\(succ\)</span>的&quot;原本意义&quot;.为了将它扩展到所有自然数,应当加上另外的这条公理<span class="math display">\[A2:\forall n, m \in \mathbb N, succ(n)+m=succ(n+m)\]</span></p>
+<blockquote>
+<p>可以证明:(具体证明可能会之后补,可能就空着了,但是证明不难,多用几遍归纳法就可以了)</p>
+<p><span class="math inline">\(\forall n, m \in \mathbb N, n+succ(m)=succ(n+m)\)</span>(后面两条的基础)</p>
+<p><span class="math inline">\(\forall n, m \in \mathbb N, n + m = m + n\)</span>(交换律)</p>
+<p><span class="math inline">\(\forall n, m, p \in \mathbb N, n + m + p = n + (m + p)\)</span>(结合律)</p>
+</blockquote>
+<p>对于乘法,就像小学作为加法的扩展,我们用加法定义.</p>
+<p>同样,<span class="math display">\[ \mathrm M1:\forall n \in \mathbb N, 1 \times n = n \]</span> <span class="math display">\[\mathrm M2:\forall n, m \in \mathbb N, n \times succ(m) = n \times m + n\]</span></p>
+<p>给出了乘法的定义.</p>
+<blockquote>
+<p>同上,我们可以证明结合律,交换律和分配律.</p>
+</blockquote>
+<h2 id="chapter-3-序和有序集">Chapter 3 序和有序集</h2>
+<p>除了数与数的计算,你同样想定义一下数与数的关系.比如<span class="math inline">\(&lt;\)</span>和<span class="math inline">\(\leq\)</span>.</p>
+<p>对于<span class="math inline">\(&lt;\)</span>,就像你在给结构体排序的时候一样,你认为它可以是一个函数$cmp(a, b) (a, b N), cmp(a, b) {0, 1} <span class="math inline">\(,满足以下两条公理:\)</span><span class="math inline">\(\mathrm L1: \forall n \in \mathbb N, cmp(n, succ(n)) = 1;\)</span>$ <span class="math display">\[ \mathrm L2: \forall p, q, r \in \mathbb N, (cmp(p, q)=1, cmp(q, r)=1) \rightarrow cmp(p, r) = 1 ;\]</span> 明显的,函数<span class="math inline">\(\forall m, n \in \mathbb N, cmp(m, n) = 1\)</span>满足以上所有条件,但是这样就太无聊了,也不是你的本意,于是你制定了第三条公理. <span class="math display">\[\mathrm L3:cmp(m, n) = 1 \rightarrow cmp(n, m) = 0\]</span></p>
+<p>此时,<span class="math inline">\(\forall n,m \in \mathbb N, cmp(n, m) = 1, cmp(m, n) = 1, m = n\)</span> 有且只有一个成立.我们称<span class="math inline">\(\mathbb N\)</span>为&quot;有序集&quot;</p>
+<h2 id="chapter-4-从mathbb-n到mathbb-z减法与群">Chapter 4 从<span class="math inline">\(\mathbb N\)</span>到<span class="math inline">\(\mathbb Z\)</span>：减法与群</h2>
+<p>从Chapter2中,你可以推导出<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/paste/7gd93p9c">消去律</a><span class="math inline">\(\forall p, q, r \in \mathbb N, p+q=r+q \rightarrow p=r\)</span>.(具体推导过程可能会补,但还是那句话:读者自证不难).看到这个命题,你本来有一种&quot;两边同减去p&quot;的冲动,但是突然想起减法还没有定义.而这正是我们在这一个章节将要进行的.</p>
+<p>对于减法,我们的最初印象大概是加法的逆运算.于是我们自然的有了这样一条公理: <span class="math display">\[S: \forall p, q, r \in \mathbb N, (p+q=r) \rightarrow (r-q=p, r-p=q)\]</span></p>
+<p>但是如此我们就会发现减法并不是封闭的运算。譬如<span class="math inline">\(1-2\)</span>在<span class="math inline">\(\mathbb N\)</span>内是没有意义的。为了把这个运算延展到整个正整数集上，你求助于负数。当然，在此之前要把<span class="math inline">\(0\)</span>定义了。一个显然的定义是：<span class="math inline">\(0:=p-p(p \in \mathbb N)\)</span>.但是最好还是检查一下它是否自洽。</p>
+<p><span class="math inline">\(\forall p, q \in \mathbb N, p+q=p+q,\)</span>故<span class="math inline">\(p\)</span></p>
+<p><span class="math inline">\(\forall a \in \mathbb N, \mathrm{def} -a, a+(-a)=0\)</span></p>
+<h2 id="chapter-5-从mathbb-z到mathbb-q除法与域">Chapter 5 从<span class="math inline">\(\mathbb Z\)</span>到<span class="math inline">\(\mathbb Q\)</span>：除法与域</h2>
+<h2 id="chapter-6-从mathbb-q到mathbb-r戴德金分割与实数的完备性">Chapter 6 从<span class="math inline">\(\mathbb Q\)</span>到<span class="math inline">\(\mathbb R\)</span>：戴德金分割,与实数的完备性</h2>
+<h2 id="chapter-7-从mathbb-r到mathbb-c">Chapter 7 从<span class="math inline">\(\mathbb R\)</span>到<span class="math inline">\(\mathbb C\)</span></h2>
+<h2 id="chapter-8-从mathbb-c到cayley-hamilton定理">Chapter 8 从<span class="math inline">\(\mathbb C\)</span>到？：Cayley-Hamilton定理</h2>
+<h2 id="chapter-ex-mathbb-q与mathbb-r之间">Chapter EX <span class="math inline">\(\mathbb Q\)</span>与<span class="math inline">\(\mathbb R\)</span>之间</h2>
+<h2 id="chapter-ex2-十进制表示法">Chapter EX2 十进制表示法</h2>
+<h2 id="chapter-ex3-走向更广阔的天地">Chapter EX3 走向更广阔的天地</h2>
+<p><a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-1.htm"><strong>1</strong></a>起初,　神创造天地. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-2.htm"><strong>2</strong></a>地是空虚混沌；深渊上一片黑暗；　神的灵运行在水面上.</p>
+<p><a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-3.htm"><strong>3</strong></a>　神说：「要有光！」就有了光. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-4.htm"><strong>4</strong></a>　神看光是好的,他就把光暗分开了. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-5.htm"><strong>5</strong></a>　神称光为昼,称暗为夜.有晚上,有早晨；这是第一日.</p>
+<p><a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-6.htm"><strong>6</strong></a>　神说：「众水之间要有穹苍,把水和水分开！」事就这样成了. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-7.htm"><strong>7</strong></a>　神造了穹苍,把穹苍以下的水和穹苍以上的水分开了. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-8.htm"><strong>8</strong></a>　神称穹苍为天.有晚上,有早晨；这是第二日.</p>
+<p><a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-9.htm"><strong>9</strong></a>　神说：「天下的水要聚在一处,使旱地露出来！」事就这样成了. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-10.htm"><strong>10</strong></a>　神称旱地为地,称水的聚处为海.　神看这是好的. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-11.htm"><strong>11</strong></a>　神说：「地上要长出青草、结种子的蔬菜和结果子的树木,各从其类,在地上的果子都包着核！」事就这样成了. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-12.htm"><strong>12</strong></a>於是,地上长出了青草和结种子的蔬菜,各从其类；又长出结果子的树木,各从其类,果子都包着核.　神看这是好的. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-13.htm"><strong>13</strong></a>有晚上,有早晨；这是第三日.</p>
+<p><a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-14.htm"><strong>14</strong></a>　神说：「在天上穹苍中,要有光体来分昼夜；这些光体要作为记号,定节令、日子和年岁； <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-15.htm"><strong>15</strong></a>它们要在天上穹苍中发光,照耀地上！」事就这样成了. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-16.htm"><strong>16</strong></a>於是,　神造了两个大光体,大的管昼,小的管夜；又造了星星. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-17.htm"><strong>17</strong></a>　神把这些光体安放在天上穹苍中,照耀地上, <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-18.htm"><strong>18</strong></a>管昼夜,分光暗.　神看这是好的. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-19.htm"><strong>19</strong></a>有晚上,有早晨；这是第四日.</p>
+<p><a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-20.htm"><strong>20</strong></a>　神说：「水要滋长生物；地上和天空之中,要有雀鸟飞翔！」 <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-21.htm"><strong>21</strong></a>於是,　神创造了大鱼和在水中滋生各种能活动的生物,各从其类；又创造了各种有翅膀的飞鸟,各从其类.　神看这是好的. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-22.htm"><strong>22</strong></a>　神就赐福给牠们,说：「要繁衍增多,充满海洋；雀鸟也要在地上增多！」 <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-23.htm"><strong>23</strong></a>有晚上,有早晨；这是第五日.</p>
+<p><a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-24.htm"><strong>24</strong></a>　神说：「地上要生出活物来,各从其类；牲畜、爬行的动物和地上的野兽,各从其类！」事就这样成了. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-25.htm"><strong>25</strong></a>於是,　神造了地上的野兽,各从其类；牲畜,各从其类；地上各种爬行的动物,各从其类.　神看这是好的.</p>
+<p>创造人类</p>
+<p><a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-26.htm"><strong>26</strong></a>　神说：「我们要照着我们的形象,按着我们的样式造人；使他们管理海里的鱼、空中的鸟、地上的牲畜,以及全地,和地上所有爬行的生物！」 <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-27.htm"><strong>27</strong></a>於是,　神照着自己的形象创造人；就是照着神的形象创造了他；他所创造的有男有女. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-28.htm"><strong>28</strong></a>　神就赐福给他们,对他们说：「要繁衍增多,充满这地,征服它；也要管理海里的鱼、空中的鸟和地上所有走动的生物.」 <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-29.htm"><strong>29</strong></a>　神说：「看哪！我把全地上结种子的各样蔬菜,和一切果树上有种子的果子,都赐给你们作食物. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-30.htm"><strong>30</strong></a>至於地上的各种野兽,空中的各种飞鸟,和地上爬行有生命的各种活物,我把一切青草蔬菜赐给牠们作食物.」事就这样成了. <a target="_blank" rel="noopener" href="https://cnbible.com/genesis/1-31.htm"><strong>31</strong></a>　神看他所造的一切都很好.有晚上,有早晨；这是第六日.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mathematical-analysis/" rel="tag"># mathematical analysis</a>
+          
+            <a href="/tags/Dedekind-cut/" rel="tag"># Dedekind cut</a>
+          
+            <a href="/tags/notes/" rel="tag"># notes</a>
+          
+            <a href="/tags/abstract-algebra/" rel="tag"># abstract algebra</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/12/23/Partition-Number/" rel="next" title="从划分数到杨表">
+                <i class="fa fa-chevron-left"></i> 从划分数到杨表
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2024/04/20/Galois%20Theory%20Note/" rel="prev" title="Galois理论笔记">
+                Galois理论笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#pma%E7%AC%94%E8%AE%B0%E4%B9%8B%E4%BB%8E1%E5%BC%80%E5%A7%8B%E7%9A%84%E6%95%B0%E5%9F%9F%E6%9E%84%E9%80%A0"><span class="nav-number">1.</span> <span class="nav-text">PMA笔记之从1开始的数域构造</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-1-%E4%BB%8E1%E5%88%B0mathbb-npeano%E5%85%AC%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">Chapter 1 从1到\(\mathbb N\)：Peano公理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-2-%E5%8A%A0%E6%B3%95%E4%B8%8E%E4%B9%98%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">Chapter 2 加法与乘法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-3-%E5%BA%8F%E5%92%8C%E6%9C%89%E5%BA%8F%E9%9B%86"><span class="nav-number">1.3.</span> <span class="nav-text">Chapter 3 序和有序集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-4-%E4%BB%8Emathbb-n%E5%88%B0mathbb-z%E5%87%8F%E6%B3%95%E4%B8%8E%E7%BE%A4"><span class="nav-number">1.4.</span> <span class="nav-text">Chapter 4 从\(\mathbb N\)到\(\mathbb Z\)：减法与群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-5-%E4%BB%8Emathbb-z%E5%88%B0mathbb-q%E9%99%A4%E6%B3%95%E4%B8%8E%E5%9F%9F"><span class="nav-number">1.5.</span> <span class="nav-text">Chapter 5 从\(\mathbb Z\)到\(\mathbb Q\)：除法与域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-6-%E4%BB%8Emathbb-q%E5%88%B0mathbb-r%E6%88%B4%E5%BE%B7%E9%87%91%E5%88%86%E5%89%B2%E4%B8%8E%E5%AE%9E%E6%95%B0%E7%9A%84%E5%AE%8C%E5%A4%87%E6%80%A7"><span class="nav-number">1.6.</span> <span class="nav-text">Chapter 6 从\(\mathbb Q\)到\(\mathbb R\)：戴德金分割,与实数的完备性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-7-%E4%BB%8Emathbb-r%E5%88%B0mathbb-c"><span class="nav-number">1.7.</span> <span class="nav-text">Chapter 7 从\(\mathbb R\)到\(\mathbb C\)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-8-%E4%BB%8Emathbb-c%E5%88%B0cayley-hamilton%E5%AE%9A%E7%90%86"><span class="nav-number">1.8.</span> <span class="nav-text">Chapter 8 从\(\mathbb C\)到？：Cayley-Hamilton定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-ex-mathbb-q%E4%B8%8Emathbb-r%E4%B9%8B%E9%97%B4"><span class="nav-number">1.9.</span> <span class="nav-text">Chapter EX \(\mathbb Q\)与\(\mathbb R\)之间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-ex2-%E5%8D%81%E8%BF%9B%E5%88%B6%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="nav-number">1.10.</span> <span class="nav-text">Chapter EX2 十进制表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chapter-ex3-%E8%B5%B0%E5%90%91%E6%9B%B4%E5%B9%BF%E9%98%94%E7%9A%84%E5%A4%A9%E5%9C%B0"><span class="nav-number">1.11.</span> <span class="nav-text">Chapter EX3 走向更广阔的天地</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Evarine Lin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
