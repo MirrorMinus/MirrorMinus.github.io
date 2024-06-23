@@ -328,7 +328,17 @@
       
         
           
-            <p>这是本人阅读Artin's &lt;Galois Theory&gt;的笔记。由于手头只有英文版的，一些翻译可能与中文版不同。这是从第二章<code>thm10</code>开始的，因为前面的笔记在我的笔记本上。也许什么时候会补上，也许不会补了。</p>
+            <blockquote>
+<p>这是本人阅读Artin's &lt;Galois Theory&gt;的笔记.由于手头有时只有英文版的有时能拿到中文版，这篇笔记也有的部分是中文版的有的是英文版的.这是从第二章<code>thm10</code>开始的，因为前面的笔记在我的笔记本上.也许什么时候会补上.也许不会补了.因此,这篇笔记适合有一定科普阅读量,或者说,知道群和域的相关概念,同时有高等代数中多项式相关的知识的人.</p>
+<p>同时,这篇笔记将只会涉及方程可解性的问题,不包括Galois理论的其他应用(毕竟我就是为了这个原因才来学习Galois理论,以及写这篇笔记的)</p>
+<p>一些部分根据我自己的理解能力有适当的补充说明.</p>
+</blockquote>
+<h2 id="前言">前言</h2>
+<p>这一段主要是我自己对galois理论的一个大概的理解.并没有什么严谨性.仅仅是为了方便读者(如果有的话)对于这个理论有一个大致的认识.</p>
+<p>首先,我们知道许多方程在有理数域上是无解的,如<span class="math inline">\(x^2=2\)</span>,也有些方程在实数域上是无解的,如<span class="math inline">\(x^2=-1\)</span>.在复数域上代数基本定理保证了<span class="math inline">\(n\)</span>次多项式方程必有<span class="math inline">\(n\)</span>个解.当我们说方程不可解的时候,我们实际上是说,这个方程无法由它的系数经过有限次加减乘除和幂运算得到根.(据说能用椭圆函数得到解,但是我暂时没这个能力了解这一块)</p>
+<p>由于域是满足加减乘除封闭的,我们只需要解决幂运算的问题就可以了.假设我们有一个包含且仅包含整数通过有限次加减乘除和幂运算能得到的数的域,只要证明存在一些整系数多项式方程的根不在这个域中就可以了.</p>
+<p>但是,我们似乎没有好的办法直接通过扩张有理数域得到这样的域.不过我们其实并不需要那么多的元素.比如<span class="math inline">\(a\sqrt 3+b(a\neq 0)\)</span>在解决<span class="math inline">\(x^2=2\)</span>方面并没有什么用.只需要恰当的选取一些和根&quot;有关&quot;的元素就可以了.</p>
+<p>同时,我们其实可以发现,<span class="math inline">\(x^2=2\)</span>的两个根在有理数域上是无法通过运算区分的.</p>
 <h3 id="thm-10"><code>thm 10</code></h3>
 <p>记<span class="math inline">\(\sigma\)</span>是一个从<span class="math inline">\(F\)</span>到<span class="math inline">\(F&#39;\)</span>的同构映射,<span class="math inline">\(p(x)\)</span>是<span class="math inline">\(F\)</span>上的多项式,<span class="math inline">\(p&#39;(x)\)</span>是<span class="math inline">\(F&#39;\)</span>上多项式,它的系数是<span class="math inline">\(p(x)\)</span>上对应系数的映射.<span class="math inline">\(E\)</span>是<span class="math inline">\(p(x)\)</span>的分裂域,<span class="math inline">\(E&#39;\)</span>是<span class="math inline">\(p&#39;(x)\)</span>的分裂域.此时<span class="math inline">\(\sigma\)</span>可以延拓为<span class="math inline">\(E\)</span>和<span class="math inline">\(E&#39;\)</span>间的同构映射.</p>
 <ul>
@@ -340,11 +350,11 @@
 <h3 id="thm-11"><code>thm 11</code></h3>
 <p>如果<span class="math inline">\(p(x)\)</span>是域<span class="math inline">\(F\)</span>上的多项式,<span class="math inline">\(p(x)=\prod_{i=1}^r p_i(x)=\prod_{i=1}^sq_i(x)\)</span>是<span class="math inline">\(p(x)\)</span>分解为<span class="math inline">\(F\)</span>上不可约多项式的两种方法,每个因式的次数都不小于<span class="math inline">\(1\)</span>,则<span class="math inline">\(r=s\)</span>且<span class="math inline">\(\forall p_i(x), \exists 1 \leq j \leq s(j \in \mathbb N), p_i(x)=Cq_j(x)(C\in F)\)</span></p>
 <ul>
-<li>证明:我们可以将<span class="math inline">\(p_i(x)\)</span>和<span class="math inline">\(q_i(x)\)</span>中的首项系数全部提出来使得首项系数均为<span class="math inline">\(1\)</span>.设<span class="math inline">\(F(\alpha)\)</span>是域<span class="math inline">\(F\)</span>的一个扩张, <span class="math inline">\(p(\alpha)=0\)</span>. <span class="math inline">\(\prod_{i=1}^r p_i(\alpha)=0=\prod_{i=1}^sq_i(\alpha)\)</span>.不妨假设<span class="math inline">\(p_1(\alpha)=q_1(\alpha)=0\)</span>,由<code>p25</code>知<span class="math inline">\(p_1(x)=q_1(x)\)</span>重复以上操作可证.</li>
+<li>证明:我们可以将<span class="math inline">\(p_i(x)\)</span>和<span class="math inline">\(q_i(x)\)</span>中的首项系数全部提出来使得首项系数均为<span class="math inline">\(1\)</span>.设<span class="math inline">\(F(a)\)</span>是域<span class="math inline">\(F\)</span>的一个扩张, <span class="math inline">\(p(a)=0\)</span>. <span class="math inline">\(\prod_{i=1}^r p_i(a)=0=\prod_{i=1}^sq_i(a)\)</span>.不妨假设<span class="math inline">\(p_1(a)=q_1(a)=0\)</span>,由<code>p25</code>知<span class="math inline">\(p_1(x)=q_1(x)\)</span>重复以上操作可证.</li>
 </ul>
 <h2 id="f-群特征标">F 群特征标</h2>
 <p>若<span class="math inline">\(G\)</span>是一个乘法群,<span class="math inline">\(F\)</span>是一个域,<span class="math inline">\(\sigma\)</span>是<span class="math inline">\(F\)</span>上<span class="math inline">\(G\)</span>的同态映射,则<span class="math inline">\(\sigma\)</span>称为<span class="math inline">\(F\)</span>上<span class="math inline">\(G\)</span>的特征标.</p>
-<p>同态映射是指满足<span class="math inline">\(\forall \alpha, \beta \in G, \sigma(\alpha\cdot\beta)=\sigma(\alpha)\cdot\sigma(\beta)\)</span>, 且<span class="math inline">\(\forall \alpha \in G, \sigma(\alpha) \neq 0\)</span>(否则<span class="math inline">\(\sigma\)</span>成为将任意数映到0的映射.too trivial.)</p>
+<p>同态映射是指满足<span class="math inline">\(\forall a, \beta \in G, \sigma(a\cdot\beta)=\sigma(a)\cdot\sigma(\beta)\)</span>, 且<span class="math inline">\(\forall a \in G, \sigma(a) \neq 0\)</span>(否则<span class="math inline">\(\sigma\)</span>成为将任意数映到0的映射.too trivial.)</p>
 <p>特征标<span class="math inline">\(\sigma_1, \sigma_2, \cdots, \sigma_n\)</span>是<strong>相关</strong>的当且仅当存在<span class="math inline">\(a_1, a_2, a_3, \cdots, a_n \in F, \prod_{i=1}^{n}a_i \neq 0\)</span>满足<span class="math inline">\(\forall x \in G,\sum_{i=1}^{n}a_i\sigma(x)=0\)</span>. 这样的相关关系称为非平凡的. 若它们不相关则称它们<strong>独立</strong>.</p>
 <h3 id="thm-12"><code>thm 12</code></h3>
 <p>若群<span class="math inline">\(G\)</span>在域<span class="math inline">\(F\)</span>上的特征标<span class="math inline">\(\sigma_1, \sigma_2, \cdots, \sigma_n\)</span>两两不同,则它们独立.</p>
@@ -353,7 +363,7 @@
 \prod_{i=1}^{n}a_i\sigma_i(x)=0
 \\(*)\prod_{i=1}^{n}a_n^{-1}a_i\sigma_i(x)=0
 \]</span></p>
-<p>则<span class="math inline">\(\forall 1 \leq i \leq n, a_i \neq 0\)</span>.因为<span class="math inline">\(\sigma_1\)</span>和<span class="math inline">\(\sigma_n\)</span>不同,所以存在<span class="math inline">\(\sigma_1(\alpha)\neq\sigma_n(\alpha)\)</span>.用<span class="math inline">\(\alpha x\)</span>代入<span class="math inline">\((*)\)</span>中得到<br />
+<p>则<span class="math inline">\(\forall 1 \leq i \leq n, a_i \neq 0\)</span>.因为<span class="math inline">\(\sigma_1\)</span>和<span class="math inline">\(\sigma_n\)</span>不同,所以存在<span class="math inline">\(\sigma_1(a)\neq\sigma_n(\alpha)\)</span>.用<span class="math inline">\(\alpha x\)</span>代入<span class="math inline">\((*)\)</span>中得到<br />
 <span class="math display">\[
 \prod_{i=1}^{n}a_n^{-1}a_i\sigma_i(\alpha)\sigma_i(x)=0
 \\(**)\prod_{i=1}^{n}\sigma^{-1}_n(\alpha)a_n^{-1}a_i\sigma_i(\alpha)\sigma_i(x)=0
@@ -387,16 +397,20 @@
 <p>若<span class="math inline">\(\sigma_1, \sigma_2, \cdots, \sigma_n\)</span>是<span class="math inline">\(n\)</span>个两两不同的<span class="math inline">\(E\)</span>到<span class="math inline">\(E&#39;\)</span>的同态映射,<span class="math inline">\(F\)</span>是<span class="math inline">\(E\)</span>的不动点域,则<span class="math inline">\((E/F) \geq n\)</span></p>
 <ul>
 <li><p>证明:我们将通过反证法证明这个定理.假设<span class="math inline">\((E/F) = r \leq n\)</span>,则<span class="math inline">\(F\)</span>有生成元<span class="math inline">\(\omega_1,\omega_2,\cdots,\omega_r\)</span>.所以线性齐次方程组 <span class="math display">\[
+\begin{cases}
 \sigma_1(\omega_1)x_1+\sigma_2(\omega_1)x_2+\cdots+\sigma_n(\omega_1)x_n=0\\
 \sigma_1(\omega_2)x_1+\sigma_2(\omega_2)x_2+\cdots+\sigma_n(\omega_2)x_n=0\\
 \cdots\\
 \sigma_1(\omega_r)x_1+\sigma_2(\omega_r)x_2+\cdots+\sigma_n(\omega_r)x_n=0
+\end{cases}
 \]</span></p>
 <p>的未知元个数大于方程个数.方程有非平凡解.记它们为<span class="math inline">\(x_1, x_2, \cdots, x_n\)</span>.对于任意<span class="math inline">\(a\in F\)</span>,存在<span class="math inline">\(a=\sum_{i=1}^{r}a_i\omega_i\)</span>的分解方式.而我们可以将上式改成(通过乘以<span class="math inline">\(a_i\)</span>) <span class="math display">\[
+\begin{cases}
 \sigma_1(a_1\omega_1)x_1+\sigma_2(a_1\omega_1)x_2+\cdots+\sigma_n(a_1\omega_1)x_n=0\\
 \sigma_1(a_2\omega_2)x_1+\sigma_2(a_2\omega_2)x_2+\cdots+\sigma_n(a_2\omega_2)x_n=0\\
 \cdots\\
 \sigma_1(a_r\omega_r)x_1+\sigma_2(a_r\omega_r)x_2+\cdots+\sigma_n(a_r\omega_r)x_n=0
+\end{cases}
 \]</span></p></li>
 </ul>
 <p>将上述式子全部加起来,就得到 <span class="math display">\[
@@ -410,11 +424,97 @@
 <blockquote>
 <p>原文是 <span class="math inline">\(\sigma\)</span> leaves <span class="math inline">\(F\)</span> fixed. 我不确定我是不是翻译对了.</p>
 </blockquote>
-<p>若<span class="math inline">\(\sigma\)</span>和<span class="math inline">\(\tau\)</span>是<span class="math inline">\(E\)</span>的两个自同构,则<span class="math inline">\(\sigma(\tau(x))\)</span> (我们可以简记为<span class="math inline">\(\sigma \tau\)</span>)也是<span class="math inline">\(E\)</span>上的自同构.我们称它为<span class="math inline">\(\sigma\)</span>和<span class="math inline">\(\tau\)</span>的乘积.</p>
-<p>自同构<span class="math inline">\(I(x)=x\)</span>称为自同构单位元(unit automorphism).</p>
+<p>若 <span class="math inline">\(\sigma\)</span> 和 <span class="math inline">\(\tau\)</span> 是 <span class="math inline">\(E\)</span> 的两个自同构,则 <span class="math inline">\(\sigma(\tau(x))\)</span> (我们可以简记为 <span class="math inline">\(\sigma \tau\)</span> )也是 <span class="math inline">\(E\)</span> 上的自同构.我们称它为 <span class="math inline">\(\sigma\)</span> 和 <span class="math inline">\(\tau\)</span> 的乘积.</p>
+<p>自同构<span class="math inline">\(I(x)=x\)</span>称为自同构的单位元(unit automorphism).</p>
 <blockquote>
-<p>这依然是我自己凭感觉翻的.</p>
+<p>这依然是我自己凭感觉翻的.其实就是恒等变换.</p>
 </blockquote>
+<h2 id="g-thm-13的应用">G <code>thm 13</code>的应用</h2>
+<blockquote>
+<p>没太看懂,先不写了:P</p>
+</blockquote>
+<h2 id="h-正规扩张">H 正规扩张</h2>
+<p><code>thm13</code>中的等号并不一定成立.因为当<span class="math inline">\(\sigma_1, \sigma_2, \cdots, \sigma_n\)</span>构成的集合不为群的时候,存在<span class="math inline">\(\sigma_{n+1}=\sigma^{-1}_i\)</span>或<span class="math inline">\(\sigma_{n+1}=\sigma_{i}\sigma_{j}\)</span>.此时容易证明<span class="math inline">\(\sigma_{n+1}\)</span>对<span class="math inline">\(F\)</span>中的元素作用都不改变.于是<span class="math inline">\((E\setminus F)\geq n+1\)</span>.</p>
+<p>而如果<span class="math inline">\(\sigma_1, \sigma_2, \cdots, \sigma_n\)</span>组成的集合<span class="math inline">\(G\)</span>对映射的乘法构成群,则对于<span class="math inline">\(E\)</span>中的元素<span class="math inline">\(a\)</span>, 考虑如下函数 <span class="math display">\[
+\sigma_i(S(a))= \sigma_1(a) + \sigma_2(a) + \cdots + \sigma_n(a), 
+\]</span></p>
+<p>用<span class="math inline">\(G\)</span>中的任意<span class="math inline">\(\sigma_i\)</span>作用在<span class="math inline">\(S(a)\)</span>上,得到</p>
+<p><span class="math display">\[
+S(a)= \sigma_i\sigma_1(a) + \sigma_i\sigma_2(a) + \cdots + \sigma_i\sigma_n(a), 
+\]</span></p>
+<p>由于<span class="math inline">\(G\)</span>构成群,<span class="math inline">\(\sigma_i\sigma_1, \sigma_i\sigma_2, \cdots \sigma_i\sigma_n\)</span>是<span class="math inline">\(\sigma_1, \sigma_2, \cdots, \sigma_n\)</span>的一个排列.于是<span class="math inline">\(\sigma_i(S(a))=S(a), S(a) \in F\)</span></p>
+<p>由<span class="math inline">\(\sigma_1, \sigma_2, \cdots, \sigma_n\)</span>的独立性可知<span class="math inline">\(S(a)\)</span>不恒等于0</p>
+<h3 id="thm14"><code>thm14</code></h3>
+<p>如果<span class="math inline">\(\sigma_1, \sigma_2, \cdots, \sigma_n\)</span>组成的集合<span class="math inline">\(G\)</span>是一个群,则<span class="math inline">\((E \setminus F)=n\)</span>.</p>
+<ul>
+<li><p>证明:根据<code>thm13</code>,我们只需要证明<span class="math inline">\(E\)</span>中任意<span class="math inline">\(n\)</span>个元素<span class="math inline">\(a_1, a_2, \cdots a_{n+1}\)</span>在<span class="math inline">\(F\)</span>上相关.</p>
+<p>考虑方程组 <span class="math display">\[
+\begin{cases}
+x_1\sigma_1^{-1}(a_1) + x_2\sigma_1^{-1}(a_2) + \cdots x_n\sigma_1^{-1}(a_{n+1}) = 0\\
+x_1\sigma_2^{-1}(a_1) + x_2\sigma_2^{-1}(a_2) + \cdots x_n\sigma_2^{-1}(a_{n+1}) = 0\\
+\cdots \\
+x_1\sigma_n^{-1}(a_1) + x_2\sigma_n^{-1}(a_2) + \cdots x_n\sigma_n^{-1}(a_{n+1}) = 0
+\end{cases}
+\]</span> <span class="math inline">\(n\)</span>个未知数,<span class="math inline">\(n+1\)</span>个方程, 所以有非平凡解.不妨设<span class="math inline">\(x_1 \neq 0\)</span></p>
+<p>​<span class="math inline">\(S(a)\)</span>不恒等于0,所以<span class="math inline">\(\exists x, S(x) \neq 0\)</span>.于是可以在每个式子两端都乘上<span class="math inline">\(xx_1^{-1}\)</span>使得新的<span class="math inline">\(S(x_1) \neq 0\)</span>.所以不妨设<span class="math inline">\(S(x_1) \neq 0\)</span>.</p>
+<p>用<span class="math inline">\(\sigma_i\)</span>作用于第<span class="math inline">\(i\)</span>个等式两端,则有 <span class="math display">\[
+\begin{cases}
+\sigma_1(x_1)a_1 + \sigma_1(x_2)a_2 + \cdots \sigma_1(x_n)a_{n+1} = 0\\
+\sigma_2(x_1)a_1 + \sigma_2(x_2)a_2 + \cdots \sigma_2(x_n)a_{n+1} = 0\\
+\cdots \\
+\sigma_n(x_1)a_1 + \sigma_n(x_2)a_2 + \cdots \sigma_n(x_n)a_{n+1} = 0
+\end{cases}
+\]</span> ​把<span class="math inline">\(n\)</span>个式子加起来就得到了</p>
+<p>​<span class="math display">\[S(x_1)a_1+S(x_2)a_2+\cdots + S(x_{n+1})a_{n+1} = 0\]</span></p>
+<p>由于<span class="math inline">\(S(x_1) \neq 0\)</span>, 这是一个非平凡的相关关系.所以<span class="math inline">\(a_1, a_2, \cdots, a_{n+1}\)</span>相关.QED. &gt; 这个定理被称作Artin引理.</p></li>
+<li>推论1:在<code>thm14</code>的条件下,如果<span class="math inline">\(\sigma\)</span>使<span class="math inline">\(K\)</span>不变则<span class="math inline">\(\sigma\)</span>也属于<span class="math inline">\(G\)</span>.</li>
+<li><p>推论2:<span class="math inline">\(E\)</span>的不同的自同构群有不同的不动点域.</p></li>
+</ul>
+<p>对于<span class="math inline">\(K\)</span>的扩域<span class="math inline">\(E\)</span>,如果存在<span class="math inline">\(E\)</span>上的自同构群<span class="math inline">\(G\)</span>使得<span class="math inline">\(K\)</span>是<span class="math inline">\(G\)</span>的不动点域,则称<span class="math inline">\(E\)</span>是<span class="math inline">\(K\)</span>的<strong>正规扩张</strong>.</p>
+<blockquote>
+<p>并不是所有扩张都是正规扩张.一个典例是<span class="math inline">\(Q(2^{1/3})\)</span>.</p>
+<p><strong>警告:此处说的正规扩张其实是Galois扩张!但是英文版和中文译版都写的是正规扩张.我之后都会写成正规扩张,但是在看其他抽象代数书籍时,请自动转换为Galois扩张!<del>这个问题直接耗了我三天</del></strong></p>
+</blockquote>
+<p>若<span class="math inline">\(f(x)\)</span>是<span class="math inline">\(F\)</span>上的多项式,如果<span class="math inline">\(f(x)\)</span>的不可约因子没有重根,则称<span class="math inline">\(f(x)\)</span>为<strong>可分</strong>的(<code>separable</code>),<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>的扩域,<span class="math inline">\(\alpha\)</span>是<span class="math inline">\(E\)</span>中的元,如果存在<span class="math inline">\(F\)</span>上可分多项式<span class="math inline">\(f(x)\)</span>使得<span class="math inline">\(f(\alpha)=0\)</span>,则称<span class="math inline">\(\alpha\)</span>为<strong>可分</strong>的.如果<span class="math inline">\(E\)</span>中所有元都是可分的,则称<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>的<strong>可分扩张</strong>.</p>
+<h3 id="thm15"><code>thm15</code></h3>
+<p><span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>的正规扩张当且仅当<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>上的一个可分多项式的分裂域.</p>
+<ul>
+<li>证明:
+<ul>
+<li><p>充分性:已知<span class="math inline">\(E\)</span>是<span class="math inline">\(p(x)\)</span>的分裂域,现在证明<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>上的正规扩张.我们将使用数学归纳法证明.</p>
+<p>记群<span class="math inline">\(G\)</span>为<span class="math inline">\(E\)</span>中使得<span class="math inline">\(F\)</span>中元素不变的自同构构成的群.</p>
+<p>如果<span class="math inline">\(p(x)\)</span>的全部根属于<span class="math inline">\(F\)</span>,则<span class="math inline">\(E=F\)</span>.<span class="math inline">\(F\)</span>是恒等变换的不动点域.</p>
+<p>现在假设<span class="math inline">\(p(x)\)</span>有<span class="math inline">\(n&gt;1\)</span>不属于<span class="math inline">\(F\)</span>的根(不可能只有一个不属于<span class="math inline">\(F\)</span>的根.可以直接把式子拆开来证明).同时对任意<span class="math inline">\(k&lt;n\)</span>,我们的假设成立.</p>
+<p>我们可以把<span class="math inline">\(p(x)\)</span>拆分成其不可约因子的乘积<span class="math inline">\(p_1(x)p_2(x)\cdots p_r(x)\)</span>. <span class="math inline">\(p_k(x)\)</span>的度数不可能全部等于1,不妨假设<span class="math inline">\(p_1(x)\)</span>的度数等于<span class="math inline">\(s &gt; 1\)</span>.若<span class="math inline">\(p(\alpha_1)=0\)</span>,则<span class="math inline">\((F(\alpha_1)/F)=deg(p_1(x))=s\)</span>.因为<span class="math inline">\(E\)</span>是<span class="math inline">\(p(x)\)</span>在<span class="math inline">\(F(\alpha_1)\)</span>上的分裂域,所以<span class="math inline">\(E\)</span>是<span class="math inline">\(F(\alpha_1)\)</span>的正规扩张(在<span class="math inline">\(F(\alpha_1)\)</span>外的根小于<span class="math inline">\(n\)</span>个).因此<span class="math inline">\(E/F(\alpha_1)\)</span>中所有元素都至少被使得<span class="math inline">\(F(\alpha_1)\)</span>不变的自同构改变.</p>
+<p><span class="math inline">\(p(x)\)</span>是可分的,所以<span class="math inline">\(p_1(x)\)</span>是可分的.记<span class="math inline">\(p_1(x)\)</span>的根为<span class="math inline">\(\alpha_1, \alpha_2, \cdots, \alpha_s\)</span>根据<code>thm8</code>,存在将<span class="math inline">\(F(\alpha_1)\)</span>映到<span class="math inline">\(F(\alpha_1), F(\alpha_2), \cdots, F(\alpha_s)\)</span>的同构映射<span class="math inline">\(\sigma_1, \sigma_2, \cdots, \sigma_s\)</span>使得<span class="math inline">\(\sigma_1(\alpha_1)=\sigma_2(\alpha_2)=\cdots=\sigma_s(\alpha_s)=\alpha_1\)</span>且<span class="math inline">\(F\)</span>中的元素不变.又根据<code>thm10</code>,可以将这<span class="math inline">\(s\)</span>个映射分别拓展为从<span class="math inline">\(E\)</span>到<span class="math inline">\(E\)</span>的映射(也就是自同构),使得<span class="math inline">\(F\)</span>中的元素不变.现在只需要证明<span class="math inline">\(\sigma_1, \sigma_2, \cdots, \sigma_s\)</span>的所有不动点都属于<span class="math inline">\(F\)</span>,就完成了充分性的证明.因为因此所有使得<span class="math inline">\(F\)</span>为其不动点的自同构构成的群也只有<span class="math inline">\(F\)</span>作为其不动点域.</p>
+<p>若<span class="math inline">\(\theta\)</span>属于群<span class="math inline">\(G\)</span>的不动点域,则<span class="math inline">\(\theta \in F(\alpha_1)\)</span>.因为使得<span class="math inline">\(F\)</span>不变的自同构必定使得<span class="math inline">\(F(\alpha)\)</span>不变.记<span class="math inline">\(\theta=\sum_{i=0}^{s-1}c_i\alpha_1^i(c_i \in F)\)</span>,用<span class="math inline">\(\sigma_i\)</span>作用在等式两端,则<span class="math inline">\(\sigma_i(\theta)=\theta=\sum_{j=0}^{s-1}\sigma_i(c_j\alpha_1^j)=\sum_{j=0}^{s-1}c_j\alpha_i^j\)</span></p>
+<p>因此,方程<span class="math inline">\(\theta=\sum_{i=0}^{s-1}c_ix^i(c_i \in F)\)</span>至少有<span class="math inline">\(s\)</span>个解,大于其度数<span class="math inline">\(s-1\)</span>.所以<span class="math inline">\(\theta=c_0,\theta \in F\)</span>.</p></li>
+<li><p>必要性:已知<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>的正规扩张,现在我们将构造出一个可分多项式<span class="math inline">\(p(x)\)</span>使得其所有根都在<span class="math inline">\(F\)</span>内.这需要先证明一个引理.</p>
+<ul>
+<li><p>引理:若<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>的正规扩张,则<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>的可分扩张.进一步说,<span class="math inline">\(E\)</span>中所有元素在<span class="math inline">\(F\)</span>上的极小多项式的所有根都在<span class="math inline">\(E\)</span>中.</p>
+<p>证明:对于<span class="math inline">\(\alpha \in E\)</span>,记<span class="math inline">\(\sigma_1, \sigma_2, \cdots, \sigma_n\)</span>是<span class="math inline">\(E\)</span>上所有使得<span class="math inline">\(F\)</span>不变的自同构,而<span class="math inline">\(\alpha_1, \alpha_2, \cdots, \alpha_m\)</span>是所有<span class="math inline">\(\sigma_i\)</span>作用到<span class="math inline">\(\alpha\)</span>上得到的元素.<span class="math inline">\(\sigma_i(\sigma_j(\alpha))=\sigma_k(\alpha)\)</span>.</p>
+<p>构造多项式<span class="math inline">\(f(x)=\prod_{i=1}^{n}(x-\alpha_i)\)</span>,其根为所有<span class="math inline">\(\alpha_i\)</span>.<span class="math inline">\(\sigma_i(f(x))\)</span>的所有根亦为<span class="math inline">\(\alpha_i\)</span>,又两个多项式首项系数相等,所以<span class="math inline">\(f(x)=\sigma_i(f(x))\)</span>.其系数经过任意<span class="math inline">\(\sigma_i\)</span>不变.又<span class="math inline">\(\alpha_i\)</span>两两不等.所以<span class="math inline">\(f(x)\)</span>是<span class="math inline">\(F\)</span>上可分多项式.这就证明了第一句话.</p>
+<p>如果<span class="math inline">\(F\)</span>上多项式<span class="math inline">\(h(x)\)</span>有<span class="math inline">\(h(\alpha)=0\)</span>,则<span class="math inline">\(\sigma_i(h(\alpha))=h(\alpha_j)=0\)</span>.于是证明了第二句话.</p></li>
+</ul>
+<p>记<span class="math inline">\(\omega_1, \omega_2, \cdots, \omega_n\)</span>为<span class="math inline">\(F\)</span>上<span class="math inline">\(E\)</span>的一个生成系,可分多项式<span class="math inline">\(f_i(x)\)</span>有<span class="math inline">\(\omega_i\)</span>为其根,则<span class="math inline">\(E\)</span>是<span class="math inline">\(p(x)=\prod_{i=1}^{i=n}f_i(x)\)</span>的分裂域.</p>
+<p>下证<span class="math inline">\(p(x)\)</span>是可分的.</p>
+<p><span class="math inline">\(p_i(\omega_j)\neq 0(i\neq j)\)</span>,否则由韦达定理得到<span class="math inline">\(\omega_i + \omega_j + k = 0(k \in F)\)</span>,这与<span class="math inline">\(\omega_i,\omega_j\)</span>的线性无关性矛盾.</p></li>
+</ul></li>
+</ul>
+<p>如果<span class="math inline">\(f(x)\)</span>是<span class="math inline">\(F\)</span>上的多项式,<span class="math inline">\(E\)</span>是<span class="math inline">\(f(x)\)</span>的分裂与,则我们称使得<span class="math inline">\(F\)</span>为其不动点域的<span class="math inline">\(E\)</span>的自同构群<span class="math inline">\(G\)</span>为<strong>方程<span class="math inline">\(f(x)\)</span>的群</strong>.</p>
+<p>接下来,我们将证明伽罗瓦理论基本定理,这个定理是关于分裂域和自同构群的.</p>
+<h3 id="thm16"><code>thm16</code></h3>
+<p>若<span class="math inline">\(p(x)\)</span>是域<span class="math inline">\(F\)</span>上多项式,<span class="math inline">\(G\)</span>是<span class="math inline">\(p(x)\)</span>的群,<span class="math inline">\(E\)</span>是<span class="math inline">\(p(x)\)</span>的分裂域,则 1. 每个中间域<span class="math inline">\(B\)</span>都是<span class="math inline">\(G\)</span>的子群<span class="math inline">\(G_B\)</span>的不动点域.我们称它们是对应的. 2. 中间域<span class="math inline">\(B\)</span>是<span class="math inline">\(F\)</span>的正规扩张当且仅当<span class="math inline">\(G\)</span>的子群<span class="math inline">\(G_B\)</span>是<span class="math inline">\(G\)</span>的正规子群,这时<span class="math inline">\(B\)</span>上以<span class="math inline">\(F\)</span>为不动点域的自同构群和商群<span class="math inline">\((G/G_B)\)</span>同构. 3. 对于任意中间域<span class="math inline">\(B\)</span>,有<span class="math inline">\((B/F)=G_B\)</span>的指数<code>(index)</code>,而<span class="math inline">\((E/B)=G_B\)</span>的阶<code>(order)</code>.</p>
+<blockquote>
+<p>服了,群的几条基本定理是一个不讲,定义都找不到...</p>
+<p>自己写一下吧:</p>
+<p>阶:群的元素个数.</p>
+<p>陪集:用群中所有的元素左乘以群的某个子群得到的等价类就是此子群的左陪集.右陪集同理.</p>
+<p>群的子群的指数就是用群内任意元素乘以此子群得到的陪集个数(左右都相等)</p>
+<p>拉格朗日定理:群的任意子群的指数和此子群的阶的乘积等于群的阶.(证明也许以后会补.其实随便上网一搜就有了)</p>
+</blockquote>
+<p>证明:由<code>thm14</code>得到第三条性质的第二点.又由<code>thm6</code>知道<span class="math inline">\((E/B)(B/F)=(E/F)\)</span>.再由lagrange定理就得到了第三条性质第一点的证明.</p>
+<p><span class="math inline">\(E\)</span>是<span class="math inline">\(p(x)\)</span>在<span class="math inline">\(F\)</span>上的分裂域,于是自然是<span class="math inline">\(p(x)\)</span>在<span class="math inline">\(B\)</span>上的分裂域.<span class="math inline">\(p(x)\)</span>在<span class="math inline">\(B\)</span>上是可分的,所以<span class="math inline">\(E\)</span>是<span class="math inline">\(B\)</span>的正规扩张.存在<span class="math inline">\(E\)</span>的自同构群的子群<span class="math inline">\(G_B\)</span>使得</p>
 
           
         
