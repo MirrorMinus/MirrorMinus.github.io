@@ -501,14 +501,73 @@ BA=\begin{bmatrix}
             <blockquote>
 <p>这是本人阅读Artin's &lt;Galois Theory&gt;的笔记.由于手头有时只有英文版的有时能拿到中文版，这篇笔记也有的部分是中文版的有的是英文版的.这是从第二章<code>thm10</code>开始的，因为前面的笔记在我的笔记本上.也许什么时候会补上.也许不会补了.因此,这篇笔记适合有一定科普阅读量,或者说,知道群和域的相关概念,同时有高等代数中多项式相关的知识的人.</p>
 <p>同时,这篇笔记将只会涉及方程可解性的问题,不包括Galois理论的其他应用(毕竟我就是为了这个原因才来学习Galois理论,以及写这篇笔记的)</p>
-<p>一些部分根据我自己的理解能力有适当的补充说明.</p>
+<p>一些部分根据我自己的理解能力有适当的补充说明.<del>另一些部分由于我的缺乏耐心有所省略.</del></p>
 </blockquote>
-<h2 id="前言">前言</h2>
-<p>这一段主要是我自己对galois理论的一个大概的理解.并没有什么严谨性.仅仅是为了方便读者(如果有的话)对于这个理论有一个大致的认识.</p>
-<p>首先,我们知道许多方程在有理数域上是无解的,如<span class="math inline">\(x^2=2\)</span>,也有些方程在实数域上是无解的,如<span class="math inline">\(x^2=-1\)</span>.在复数域上代数基本定理保证了<span class="math inline">\(n\)</span>次多项式方程必有<span class="math inline">\(n\)</span>个解.当我们说方程不可解的时候,我们实际上是说,这个方程无法由它的系数经过有限次加减乘除和幂运算得到根.(据说能用椭圆函数得到解,但是我暂时没这个能力了解这一块)</p>
-<p>由于域是满足加减乘除封闭的,我们只需要解决幂运算的问题就可以了.假设我们有一个包含且仅包含整数通过有限次加减乘除和幂运算能得到的数的域,只要证明存在一些整系数多项式方程的根不在这个域中就可以了.</p>
-<p>但是,我们似乎没有好的办法直接通过扩张有理数域得到这样的域.不过我们其实并不需要那么多的元素.比如<span class="math inline">\(a\sqrt 3+b(a\neq 0)\)</span>在解决<span class="math inline">\(x^2=2\)</span>方面并没有什么用.只需要恰当的选取一些和根&quot;有关&quot;的元素就可以了.</p>
-<p>同时,我们其实可以发现,<span class="math inline">\(x^2=2\)</span>的两个根在有理数域上是无法通过运算区分的.</p>
+<h1 id="part-0-群论">Part 0 群论</h1>
+<p>这里是一些比较散的关于抽象代数的定义与定理.建议是看完群和域的定义就可以先去看Part1了<del>虽然我还没写</del>,其他的等有用到再看.</p>
+<ul>
+<li>群:若集合<span class="math inline">\(G\)</span>和<span class="math inline">\(G\)</span>上的二元运算<span class="math inline">\(\circ\)</span>满足以下四条公理,则称<span class="math inline">\(G\)</span>(对于运算<span class="math inline">\(\circ\)</span>)构成群</li>
+</ul>
+<ol type="1">
+<li><span class="math inline">\(\forall a, b \in G, a \circ b \in G\)</span>(封闭性)</li>
+<li><span class="math inline">\(\forall a, b, c \in G, (a \circ b) \circ c = a \circ (b \circ c)\)</span>(结合律)</li>
+<li><span class="math inline">\(\exists e \in G, \forall a \in G, a\circ e = e \circ a = a\)</span>,我们称<span class="math inline">\(e\)</span>为<span class="math inline">\(G\)</span>的单位元.</li>
+<li><span class="math inline">\(\forall a \in G, \exists b \in G, a \circ b = b \circ a = e\)</span>,我们称<span class="math inline">\(b\)</span>为<span class="math inline">\(a\)</span>的逆元,记作<span class="math inline">\(a^{-1}\)</span>.</li>
+</ol>
+<p>当这个群和运算还满足交换律<span class="math inline">\(\forall a, b \in G, a \circ b = b \circ a\)</span>,我们称<span class="math inline">\(G\)</span>为一个交换群.又称阿贝尔群.</p>
+<blockquote>
+<p>群完全可以不满足交换律.比如可逆矩阵的乘法群.</p>
+</blockquote>
+<ul>
+<li><p>群的整数次幂:定义<span class="math inline">\(a\in G\)</span>的整数次幂<span class="math inline">\(a^n\)</span>为满足如下性质的函数:</p>
+<ol type="1">
+<li><p><span class="math inline">\(a^0=e\)</span></p></li>
+<li><p><span class="math inline">\(\forall n \in \mathbb N,a^n=a\circ a^{n-1}\)</span></p></li>
+<li><p><span class="math inline">\(\forall n \in \mathbb N, a^{-n}=(a^{-1})^n\)</span></p></li>
+</ol></li>
+</ul>
+<blockquote>
+<p>对于阿贝尔群,我们有时将<span class="math inline">\(\circ\)</span>称作加法,其整数次幂也就相应变成<span class="math inline">\(na\)</span>.</p>
+</blockquote>
+<p>如果<span class="math inline">\(G\)</span>是有限集,则称<span class="math inline">\(G\)</span>的元素个数为<span class="math inline">\(G\)</span>的阶.记作<span class="math inline">\(|G|\)</span>如果存在正整数<span class="math inline">\(n\)</span>,对于某个<span class="math inline">\(G\)</span>中的元素<span class="math inline">\(a\)</span>,<span class="math inline">\(a^n=e\)</span>,则所有这些<span class="math inline">\(n\)</span>中最小的即为<span class="math inline">\(a\)</span>的阶.</p>
+<ul>
+<li>循环群:如果<span class="math inline">\(G\)</span>中存在一个元素<span class="math inline">\(a\)</span>,<span class="math inline">\(\forall b \in G, \exists n \in \mathbb Z, a^n=b\)</span>,则称<span class="math inline">\(G\)</span>为循环群.<span class="math inline">\(a\)</span>为其生成元.</li>
+</ul>
+<p>我们接下来沿用记号<span class="math inline">\(G\)</span>和<span class="math inline">\(\circ\)</span>.</p>
+<ul>
+<li>子群: <span class="math inline">\(G\)</span>的子集<span class="math inline">\(H\)</span>若也对运算<span class="math inline">\(\circ\)</span>构成群,则称<span class="math inline">\(H\)</span>为<span class="math inline">\(G\)</span>的子群.</li>
+</ul>
+<blockquote>
+<p><span class="math inline">\(G\)</span>有两个非常显然的子群<span class="math inline">\(G\)</span>和<span class="math inline">\(\{e\}\)</span>.其余的(如果有的话)称为<span class="math inline">\(G\)</span>的非平凡子群.</p>
+</blockquote>
+<blockquote>
+<p>要验证<span class="math inline">\(G\)</span>的某个子集是群,只需验证性质3和4即可.</p>
+</blockquote>
+<ul>
+<li><p>陪集:<span class="math inline">\(G\)</span>的子集<span class="math inline">\(H\)</span>上元素<span class="math inline">\(a\)</span>的左陪集为<span class="math inline">\(aH=\{a\circ h|h \in H \}\)</span>,右陪集为<span class="math inline">\(Ha=\{h \circ a|h \in G\}\)</span></p></li>
+<li><p>拉格朗日定理:子群的阶是<span class="math inline">\(G\)</span>的阶的因数.</p>
+<ul>
+<li>证明: <span class="math inline">\(\forall a \in G, aH\)</span>的元素个数等于<span class="math inline">\(H\)</span>.因为若<span class="math inline">\(ah_1=ah_2\)</span>,则<span class="math inline">\(h_1=h_2\)</span>.<span class="math inline">\(f(h)=ah\)</span>是<span class="math inline">\(H\)</span>到<span class="math inline">\(G\)</span>的双射.右陪集同理.</li>
+</ul></li>
+<li><p>正规子群: 如果<span class="math inline">\(G\)</span>的子群<span class="math inline">\(N\)</span>的所有左陪集等于右陪集,则称<span class="math inline">\(N\)</span>为<span class="math inline">\(G\)</span>的正规子群.也就是说,<span class="math inline">\(\forall a \in G, n \in N, \exists n_1, n_2 \in N, an=n_1a, na=an_2\)</span>.</p></li>
+<li><p>商群: 正规子群<span class="math inline">\(N\)</span>的陪集的集合构成一个群,称为商群<span class="math inline">\((G/N)\)</span>.这个群对应的运算为<span class="math inline">\(aN\circ bN=ab N\)</span>.</p>
+<ul>
+<li>这个运算是良定义的.也就是说,<span class="math inline">\(\forall a, a&#39;, b, b&#39; \in G\)</span>, 若<span class="math inline">\(aN=a&#39;N\)</span>,<span class="math inline">\(NH=b&#39;N\)</span>,则<span class="math inline">\(abN=(a&#39;b&#39;)N\)</span>. <span class="math inline">\(abN \subseteq (a&#39;b&#39;)N\)</span>.因为<span class="math inline">\(abN\)</span>中的元素均形如<span class="math inline">\(abn(n \in N)\)</span>. <span class="math inline">\(abn=an_1b&#39;=a&#39;n_2b&#39;=a&#39;b&#39;n_3 \in (a&#39;b&#39;)N\)</span>. 同理,<span class="math inline">\((a&#39;b&#39;N) \subseteq abN\)</span>.因此得证. &gt; 群的四个公理均可通过归结于<span class="math inline">\(G\)</span>的性质得到.</li>
+</ul></li>
+<li><p>置换:从集合<span class="math inline">\(S=\{i|1\leq i \leq n,i \in \mathbb N\}\)</span></p></li>
+<li><p>对称群:</p></li>
+<li><p>域:<del>域就是交换除环</del>如果一个集合<span class="math inline">\(F\)</span>和这个集合上的两个二元运算<span class="math inline">\(+\)</span>和<span class="math inline">\(\times\)</span>满足以下几个公理(我们只是叫它们加法和乘法,因为满足这两个运算的一些性质.并不一定是我们在实数上的乘法),则称<span class="math inline">\(F\)</span>为域.</p></li>
+</ul>
+<ol type="1">
+<li><span class="math inline">\(F\)</span>关于<span class="math inline">\(+\)</span>是一个交换群.我们记<span class="math inline">\(+\)</span>的单位元为<span class="math inline">\(0\)</span>.</li>
+<li><span class="math inline">\(F\)</span>中的非<span class="math inline">\(0\)</span>元素关于<span class="math inline">\(\times\)</span>形成交换群.</li>
+<li><span class="math inline">\(\forall a, b, c \in F, a\times b + c\times b = (a+c)\times b\)</span>.(分配律)</li>
+</ol>
+<blockquote>
+<p>关于为什么一定是非0元:<span class="math inline">\(\forall a \in F, 0\times a=(a+(-a))\times a=a\times a + (-a)\times a= a\times a + (-(a\times a))=0\)</span></p>
+</blockquote>
+<h1 id="part-1-线性代数">Part 1 线性代数</h1>
+<h1 id="part-2-域论">Part 2 域论</h1>
 <h3 id="thm-10"><code>thm 10</code></h3>
 <p>记<span class="math inline">\(\sigma\)</span>是一个从<span class="math inline">\(F\)</span>到<span class="math inline">\(F&#39;\)</span>的同构映射,<span class="math inline">\(p(x)\)</span>是<span class="math inline">\(F\)</span>上的多项式,<span class="math inline">\(p&#39;(x)\)</span>是<span class="math inline">\(F&#39;\)</span>上多项式,它的系数是<span class="math inline">\(p(x)\)</span>上对应系数的映射.<span class="math inline">\(E\)</span>是<span class="math inline">\(p(x)\)</span>的分裂域,<span class="math inline">\(E&#39;\)</span>是<span class="math inline">\(p&#39;(x)\)</span>的分裂域.此时<span class="math inline">\(\sigma\)</span>可以延拓为<span class="math inline">\(E\)</span>和<span class="math inline">\(E&#39;\)</span>间的同构映射.</p>
 <ul>
@@ -748,7 +807,7 @@ x_1\sigma_n^{-1}(a_1) + x_2\sigma_n^{-1}(a_2) + \cdots x_n\sigma_n^{-1}(a_{n+1})
 </blockquote>
 <p>记<span class="math inline">\(G\)</span>为一个交换的加法群,我们称<span class="math inline">\(G\)</span>的元素<span class="math inline">\(g_1, g_2, \cdots, g_n\)</span>生成<span class="math inline">\(G\)</span>当且仅当<span class="math inline">\(G\)</span>中的任意元素<span class="math inline">\(g\)</span>都可以表示为<span class="math inline">\(\sum_{i=1}^{n}n_ig_i(n_i \in \mathbb N)\)</span>. 如果在此同时任意少于<span class="math inline">\(n\)</span>个的元素无法生成<span class="math inline">\(G\)</span>,则我们称<span class="math inline">\(\{g_n\}\)</span>为<span class="math inline">\(G\)</span>的最小生成系.</p>
 <h4 id="thm-17.5"><code>thm 17.5</code></h4>
-<p>有限生成阿贝尔群结构定理(decomposition theorem):每个有有限生成元的阿贝尔群<span class="math inline">\(G\)</span>都能写成其循环群<span class="math inline">\(G_1, G_2, \cdots, G_n\)</span>的直和.其中<span class="math inline">\(G_i\)</span>的阶数<span class="math inline">\(o(G_i)\)</span>是<span class="math inline">\(o(G_{i+1}\)</span>的因数,<span class="math inline">\(n\)</span>是<span class="math inline">\(G\)</span>的最小生成系的生成元的个数.</p>
+<p>有限生成阿贝尔群结构定理(decomposition theorem):每个有有限生成元的阿贝尔群<span class="math inline">\(G\)</span>都能写成其循环群<span class="math inline">\(G_1, G_2, \cdots, G_n\)</span>的直和.其中<span class="math inline">\(G_i\)</span>的阶数<span class="math inline">\(o(G_i)\)</span>是<span class="math inline">\(o(G_{i+1})\)</span>的因数,<span class="math inline">\(n\)</span>是<span class="math inline">\(G\)</span>的最小生成系的生成元的个数.</p>
 <ul>
 <li><p>证明:我们对<span class="math inline">\(n\)</span>使用数学归纳法.对于<span class="math inline">\(n=1\)</span>,<span class="math inline">\(G\)</span>即为循环群,定理是平凡的.</p>
 <p>现在假设命题对于所有<span class="math inline">\(n &lt; k\)</span>成立,而<span class="math inline">\(G\)</span>是某做小生成元个数为<span class="math inline">\(k\)</span>的最小生成系的阿贝尔群.</p>
@@ -805,6 +864,33 @@ x_\sigma\sigma(z)+x_\tau\tau(z)+\cdots = \sum_{\tau \in G}x_\tau\tau(z) = a \neq
 (x_\sigma)^{-1}\sum_{\tau \in G}x_{\tau}\tau(z)=(x_\sigma)^{-1}a=\sigma(a), \\
 x_{\sigma}=a(\sigma(a))^{-1}
 \]</span></p></li>
+</ul>
+<h2 id="l-库默尔域">L 库默尔域</h2>
+<p>如果<span class="math inline">\(F\)</span>包含一个<span class="math inline">\(n\)</span>次本原单位根,那么<span class="math inline">\(F\)</span>的任意形如<span class="math inline">\(\prod_{i=1}^r(x^n-a_i), a_i \in F\)</span>的多项式的分裂域<span class="math inline">\(E\)</span>称为<span class="math inline">\(F\)</span>的库默尔扩域,简称库默尔域.</p>
+<blockquote>
+<p>可以看出来相当于是加入了开n次方的运算.</p>
+</blockquote>
+<p>如果<span class="math inline">\(F\)</span>包括一个<span class="math inline">\(n\)</span>次本原单位根,那么<span class="math inline">\(n\)</span>不是<span class="math inline">\(F\)</span>的特征<span class="math inline">\(p\)</span>的倍数,或者<span class="math inline">\(F\)</span>的特征是0.这是因为如果<span class="math inline">\(n=qp\)</span>,则<span class="math inline">\(y^p-1=(y-1)^p\)</span>.(证明不难.注意最后一个符号).因此<span class="math inline">\(x^n-1=(x^q)^p-1=(x^q-1)^p\)</span>.<span class="math inline">\(x^n-1\)</span>最多有<span class="math inline">\(q\)</span>个不同的根.但是我们又假设<span class="math inline">\(F\)</span>包含<span class="math inline">\(n\)</span>个<span class="math inline">\(n\)</span>次单位根.这是矛盾的.</p>
+<p>对于<span class="math inline">\(F\)</span>的一个库默尔扩张<span class="math inline">\(E\)</span>,<span class="math inline">\(\forall i, x^n-a_i\)</span>没有重根.这可以由<code>thm 19</code>得知.因此,这个库默尔扩张是可分扩张.</p>
+<p>令<span class="math inline">\(b_i\)</span>是方程<span class="math inline">\(x^{n}-a_i\)</span>的根,则对于<span class="math inline">\(n\)</span>次单位根<span class="math inline">\(1, \epsilon_1, \epsilon_2, \cdots, \epsilon_{n-1}\)</span>有<span class="math inline">\(b_i, \epsilon_1b_i, \epsilon_2b_i, \cdots, \epsilon_{n-1}b_i\)</span>均为<span class="math inline">\(x^n-a_i\)</span>的根且它们互不相等. 故它们是这个多项式的所有根.令<span class="math inline">\(\sigma, \tau\)</span>是<span class="math inline">\(E\)</span>上固定<span class="math inline">\(F\)</span>的域,则<span class="math inline">\(\sigma\)</span>和<span class="math inline">\(\tau\)</span>都会把<span class="math inline">\(b_i\)</span>映为某个<span class="math inline">\(\epsilon_{\sigma}b_i\)</span>,且<span class="math inline">\(\sigma\tau(\epsilon_jb_i)=\sigma(\epsilon_\tau \epsilon_jb_i)=\epsilon_\tau\epsilon_\sigma \epsilon_jb_i=\epsilon_\sigma\epsilon_\tau \epsilon_j b_i=\sigma(\tau(\epsilon_j b_i))\)</span>故<span class="math inline">\(E\)</span>在<span class="math inline">\(F\)</span>上的群<span class="math inline">\(G\)</span>是交换群.</p>
+<p><span class="math inline">\(\forall \sigma \in G,\sigma^{k+1}(b_i)=\sigma^k(\epsilon_\sigma b_i)=\epsilon_\sigma(\sigma^{k}(b_i))\)</span>因此<span class="math inline">\(\sigma^n(b_i)=(\epsilon_\sigma)^n\sigma(b_i)=\sigma(b_i)\)</span>.同理可得对于任意<span class="math inline">\(\epsilon_jb_i\)</span>,<span class="math inline">\(\epsilon_jb_i=\sigma^n(\epsilon_jb_i)\)</span>.因此<span class="math inline">\(\sigma^n=1\)</span>.</p>
+<h3 id="thm-23"><code>thm 23</code></h3>
+<p>如果<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>上多项式<span class="math inline">\(p(x)=(x^n-a_1)(x^n-a_2)\cdots(x^n-a_n)\)</span>的分裂域,<span class="math inline">\(\forall 1\leq i \leq n,a_i \in F\)</span>,且<span class="math inline">\(F\)</span>包含所有<span class="math inline">\(n\)</span>次单位根,则有以下三个性质成立.</p>
+<ol type="1">
+<li><span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>的正规扩张</li>
+<li><span class="math inline">\(E\)</span>在<span class="math inline">\(F\)</span>上的群是交换群.</li>
+<li><span class="math inline">\(G\)</span>中所有元素的阶都是<span class="math inline">\(n\)</span>的因数.</li>
+</ol>
+<ul>
+<li><p>证明:前文已有.</p></li>
+<li><p>推论:如果<span class="math inline">\(p\)</span>是质数,<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>上多项式<span class="math inline">\(x^p=a\)</span>的分裂域,<span class="math inline">\(F\)</span>包括一个<span class="math inline">\(p\)</span>次本原单位根,则或者<span class="math inline">\(E=F\)</span>,或者<span class="math inline">\(x^p=a\)</span>不可分,<span class="math inline">\(E\)</span>在<span class="math inline">\(F\)</span>上的群是循环群.</p></li>
+</ul>
+<p>接下来我们证明这三个结论是<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>上库默尔扩张的充要条件.</p>
+<p>令<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>的一个正规扩张,它在<span class="math inline">\(F\)</span>上的群是阿贝尔群,<span class="math inline">\(F\)</span>有一个<span class="math inline">\(r\)</span>次本原单位根,<span class="math inline">\(r\)</span>是所有<span class="math inline">\(G\)</span>中元素的阶的最小公倍数.</p>
+<h3 id="thm-23.5"><code>thm 23.5</code></h3>
+<p><span class="math inline">\(G\)</span>到<span class="math inline">\(F\)</span>的群特征标中,映射到<span class="math inline">\(r\)</span>次本原单位根的特征标的集合为<span class="math inline">\(X\)</span>,则<span class="math inline">\(X\cong G\)</span>.且<span class="math inline">\(\forall \sigma \in G, \sigma \neq 1, \exists C \in X, C(\sigma)\neq 1\)</span>.</p>
+<ul>
+<li>证明:运用<code>thm 17.5</code>,将<span class="math inline">\(G\)</span>写成<span class="math inline">\(G_1, G_2, \cdots, G_t\)</span>的直和.其中<span class="math inline">\(G_i\)</span>的阶为<span class="math inline">\(m_i\)</span>,则每个<span class="math inline">\(\sigma \in G\)</span>都可以写成<span class="math inline">\(\sigma = \prod \limits_{i=1}\sigma_i\nu^i\)</span></li>
 </ul>
 
           
