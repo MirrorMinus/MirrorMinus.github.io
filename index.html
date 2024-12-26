@@ -505,8 +505,10 @@ BA=\begin{bmatrix}
 </blockquote>
 <h1 id="part-0-群论">Part 0 群论</h1>
 <p>这里是一些比较散的关于抽象代数的定义与定理.建议是看完群和域的定义就可以先去看Part1了<del>虽然我还没写</del>,其他的等有用到再看.</p>
+<p>这里是一些比较散的,主要关于线性代数与抽象代数的定义与定理.</p>
 <ul>
-<li>群:若集合<span class="math inline">\(G\)</span>和<span class="math inline">\(G\)</span>上的二元运算<span class="math inline">\(\circ\)</span>满足以下四条公理,则称<span class="math inline">\(G\)</span>(对于运算<span class="math inline">\(\circ\)</span>)构成群</li>
+<li><p>单位根: <span class="math inline">\(x^n=1\)</span>在复数域上有<span class="math inline">\(n\)</span>个根,为<span class="math inline">\(\cos(\frac{2k\pi}{n})+\mathrm i \sin(\frac{2k\pi}{n})\)</span>.称为<span class="math inline">\(n\)</span>次单位根.其中对于<span class="math inline">\(gcd(k, n)=1\)</span>的<span class="math inline">\(k\)</span>,称<span class="math inline">\(\cos(\frac{2k\pi}{n})+\mathrm i \sin(\frac{2k\pi}{n})\)</span>为<span class="math inline">\(n\)</span>次本原单位根.记<span class="math inline">\(\cos(\frac{2\pi}{n})+\mathrm i \sin(\frac{2\pi}{n})=\zeta_n\)</span>.</p></li>
+<li><p>群:若集合<span class="math inline">\(G\)</span>和<span class="math inline">\(G\)</span>上的二元运算<span class="math inline">\(\circ\)</span>满足以下四条公理,则称<span class="math inline">\(G\)</span>(对于运算<span class="math inline">\(\circ\)</span>)构成群</p></li>
 </ul>
 <ol type="1">
 <li><span class="math inline">\(\forall a, b \in G, a \circ b \in G\)</span>(封闭性)</li>
@@ -519,6 +521,7 @@ BA=\begin{bmatrix}
 <p>群完全可以不满足交换律.比如可逆矩阵的乘法群.</p>
 </blockquote>
 <ul>
+<li><p>映射的核: 群<span class="math inline">\(G\)</span>到<span class="math inline">\(H\)</span>的映射<span class="math inline">\(f\)</span>的核<span class="math inline">\(\ker f=\{g\in G| f(g)=e_H\}\)</span></p></li>
 <li><p>群的整数次幂:定义<span class="math inline">\(a\in G\)</span>的整数次幂<span class="math inline">\(a^n\)</span>为满足如下性质的函数:</p>
 <ol type="1">
 <li><p><span class="math inline">\(a^0=e\)</span></p></li>
@@ -554,8 +557,8 @@ BA=\begin{bmatrix}
 <ul>
 <li>这个运算是良定义的.也就是说,<span class="math inline">\(\forall a, a&#39;, b, b&#39; \in G\)</span>, 若<span class="math inline">\(aN=a&#39;N\)</span>,<span class="math inline">\(NH=b&#39;N\)</span>,则<span class="math inline">\(abN=(a&#39;b&#39;)N\)</span>. <span class="math inline">\(abN \subseteq (a&#39;b&#39;)N\)</span>.因为<span class="math inline">\(abN\)</span>中的元素均形如<span class="math inline">\(abn(n \in N)\)</span>. <span class="math inline">\(abn=an_1b&#39;=a&#39;n_2b&#39;=a&#39;b&#39;n_3 \in (a&#39;b&#39;)N\)</span>. 同理,<span class="math inline">\((a&#39;b&#39;N) \subseteq abN\)</span>.因此得证. &gt; 群的四个公理均可通过归结于<span class="math inline">\(G\)</span>的性质得到.</li>
 </ul></li>
-<li><p>置换:从集合<span class="math inline">\(S=\{i|1\leq i \leq n,i \in \mathbb N\}\)</span></p></li>
-<li><p>对称群:</p></li>
+<li><p>置换:详见<code>Part 3-B</code>.</p></li>
+<li><p>对称群:详见<code>Part 2-B</code>.</p></li>
 <li><p>域:<del>域就是交换除环</del>如果一个集合<span class="math inline">\(F\)</span>和这个集合上的两个二元运算<span class="math inline">\(+\)</span>和<span class="math inline">\(\times\)</span>满足以下几个公理(我们只是叫它们加法和乘法,因为满足这两个运算的一些性质.并不一定是我们在实数上的乘法),则称<span class="math inline">\(F\)</span>为域.</p></li>
 </ul>
 <ol type="1">
@@ -567,6 +570,25 @@ BA=\begin{bmatrix}
 <p>关于为什么一定是非0元:<span class="math inline">\(\forall a \in F, 0\times a=(a+(-a))\times a=a\times a + (-a)\times a= a\times a + (-(a\times a))=0\)</span></p>
 </blockquote>
 <h1 id="part-1-线性代数">Part 1 线性代数</h1>
+<blockquote>
+<p>本章旨在讨论以下两件事情:齐次线性方程组和非齐次线性方程组的可解性(有没有解,有多少解).如果您已经知道了,可以直接开始看Part 2了.</p>
+</blockquote>
+<h2 id="a-线性空间">A 线性空间</h2>
+<p><span class="math inline">\(V\)</span>是一个阿贝尔群,其上二元运算记作<span class="math inline">\(+\)</span>.<span class="math inline">\(F\)</span>是一个域. 现在定义<span class="math inline">\(F\)</span>与<span class="math inline">\(V\)</span>的乘法,称作数乘.如果<span class="math inline">\(V\)</span>和<span class="math inline">\(F\)</span>满足以下条件,则称<span class="math inline">\(V\)</span>是<span class="math inline">\(F\)</span>上的线性空间.</p>
+<ol type="1">
+<li><span class="math inline">\(\forall a \in F, A, B \in V, a(A+B)=aA+aB\)</span></li>
+<li><span class="math inline">\(\forall a, b \in F, A \in V, (a+b)A=aA+bA\)</span></li>
+<li><span class="math inline">\(\forall a, b \in F, A \in V, a(bA)=(ab)A\)</span></li>
+<li><span class="math inline">\(\forall A \in V, 1A=A\)</span>.其中<span class="math inline">\(1\)</span>是<span class="math inline">\(F\)</span>上的乘法逆元.</li>
+</ol>
+<h2 id="b-齐次线性方程组">B 齐次线性方程组</h2>
+<p>在域<span class="math inline">\(K\)</span>中给定<span class="math inline">\(n\cdot m\)</span>个元<span class="math inline">\(a_{ij}\)</span>,<span class="math inline">\(1 \leq i \leq m\)</span>,<span class="math inline">\(1 \leq j \leq n\)</span>.齐次线性方程组就是形如 <span class="math display">\[\begin{cases}
+a_{11}x_1+a_{12}x_2+ \cdots +a_{1n}x_n=0\\
+\cdots \\
+a_{n1}x_1+a_{n2}x_2+\cdots + a_{nn}x_n=0
+\end{cases}\]</span> 的方程组.(<span class="math inline">\(\forall i, x_i \in K\)</span>).易知这个方程组有平凡解<span class="math inline">\(\forall i, x_i = 0\)</span>.</p>
+<h3 id="thm-1"><code>thm 1</code></h3>
+<p>如果<span class="math inline">\(n &gt; m\)</span>,则此方程组必有非平凡解.</p>
 <h1 id="part-2-域论">Part 2 域论</h1>
 <h3 id="thm-10"><code>thm 10</code></h3>
 <p>记<span class="math inline">\(\sigma\)</span>是一个从<span class="math inline">\(F\)</span>到<span class="math inline">\(F&#39;\)</span>的同构映射,<span class="math inline">\(p(x)\)</span>是<span class="math inline">\(F\)</span>上的多项式,<span class="math inline">\(p&#39;(x)\)</span>是<span class="math inline">\(F&#39;\)</span>上多项式,它的系数是<span class="math inline">\(p(x)\)</span>上对应系数的映射.<span class="math inline">\(E\)</span>是<span class="math inline">\(p(x)\)</span>的分裂域,<span class="math inline">\(E&#39;\)</span>是<span class="math inline">\(p&#39;(x)\)</span>的分裂域.此时<span class="math inline">\(\sigma\)</span>可以延拓为<span class="math inline">\(E\)</span>和<span class="math inline">\(E&#39;\)</span>间的同构映射.</p>
@@ -604,10 +626,7 @@ BA=\begin{bmatrix}
 <p>根据归纳假设, <span class="math display">\[
 \sigma_n^{-1}(\alpha)a_n^{-1}a_1\sigma_1(\alpha)=a_n^{-1}a_1
 \\a_n^{-1}a_1\sigma_1(\alpha)=\sigma_n(\alpha)a_n^{-1}a_1=a_n^{-1}a_1\sigma_n(\alpha)
-\]</span> <span class="math inline">\(a_n^{-1}a_1 \neq 0\)</span>, 所以<span class="math inline">\(\sigma_1(\alpha)=\sigma_n(\alpha)\)</span>. 与我们所做的假设矛盾.</p>
-<blockquote>
-<p>在交换域中自然是没问题的，但是在非交换域中我没找到证明方法。</p>
-</blockquote></li>
+\]</span> <span class="math inline">\(a_n^{-1}a_1 \neq 0\)</span>, 所以<span class="math inline">\(\sigma_1(\alpha)=\sigma_n(\alpha)\)</span>. 与我们所做的假设矛盾.</p></li>
 <li><p>推论:<span class="math inline">\(E\)</span>和<span class="math inline">\(E&#39;\)</span>是两个域,<span class="math inline">\(\sigma_1, \sigma_2, \cdots, \sigma_n\)</span>是一些从<span class="math inline">\(E\)</span>到<span class="math inline">\(E&#39;\)</span>的两两不同的同构映射,则<span class="math inline">\(\sigma_1, \sigma_2, \cdots, \sigma_n\)</span>独立.</p>
 <p>这是由于<span class="math inline">\(E\setminus\{0\}\)</span>构成乘法群.</p></li>
 </ul>
@@ -871,9 +890,6 @@ x_{\sigma}=a(\sigma(a))^{-1}
 <p>可以看出来相当于是加入了开n次方的运算.</p>
 </blockquote>
 <p>如果<span class="math inline">\(F\)</span>包括一个<span class="math inline">\(n\)</span>次本原单位根,那么<span class="math inline">\(n\)</span>不是<span class="math inline">\(F\)</span>的特征<span class="math inline">\(p\)</span>的倍数,或者<span class="math inline">\(F\)</span>的特征是0.这是因为如果<span class="math inline">\(n=qp\)</span>,则<span class="math inline">\(y^p-1=(y-1)^p\)</span>.(证明不难.注意最后一个符号).因此<span class="math inline">\(x^n-1=(x^q)^p-1=(x^q-1)^p\)</span>.<span class="math inline">\(x^n-1\)</span>最多有<span class="math inline">\(q\)</span>个不同的根.但是我们又假设<span class="math inline">\(F\)</span>包含<span class="math inline">\(n\)</span>个<span class="math inline">\(n\)</span>次单位根.这是矛盾的.</p>
-<p>对于<span class="math inline">\(F\)</span>的一个库默尔扩张<span class="math inline">\(E\)</span>,<span class="math inline">\(\forall i, x^n-a_i\)</span>没有重根.这可以由<code>thm 19</code>得知.因此,这个库默尔扩张是可分扩张.</p>
-<p>令<span class="math inline">\(b_i\)</span>是方程<span class="math inline">\(x^{n}-a_i\)</span>的根,则对于<span class="math inline">\(n\)</span>次单位根<span class="math inline">\(1, \epsilon_1, \epsilon_2, \cdots, \epsilon_{n-1}\)</span>有<span class="math inline">\(b_i, \epsilon_1b_i, \epsilon_2b_i, \cdots, \epsilon_{n-1}b_i\)</span>均为<span class="math inline">\(x^n-a_i\)</span>的根且它们互不相等. 故它们是这个多项式的所有根.令<span class="math inline">\(\sigma, \tau\)</span>是<span class="math inline">\(E\)</span>上固定<span class="math inline">\(F\)</span>的域,则<span class="math inline">\(\sigma\)</span>和<span class="math inline">\(\tau\)</span>都会把<span class="math inline">\(b_i\)</span>映为某个<span class="math inline">\(\epsilon_{\sigma}b_i\)</span>,且<span class="math inline">\(\sigma\tau(\epsilon_jb_i)=\sigma(\epsilon_\tau \epsilon_jb_i)=\epsilon_\tau\epsilon_\sigma \epsilon_jb_i=\epsilon_\sigma\epsilon_\tau \epsilon_j b_i=\sigma(\tau(\epsilon_j b_i))\)</span>故<span class="math inline">\(E\)</span>在<span class="math inline">\(F\)</span>上的群<span class="math inline">\(G\)</span>是交换群.</p>
-<p><span class="math inline">\(\forall \sigma \in G,\sigma^{k+1}(b_i)=\sigma^k(\epsilon_\sigma b_i)=\epsilon_\sigma(\sigma^{k}(b_i))\)</span>因此<span class="math inline">\(\sigma^n(b_i)=(\epsilon_\sigma)^n\sigma(b_i)=\sigma(b_i)\)</span>.同理可得对于任意<span class="math inline">\(\epsilon_jb_i\)</span>,<span class="math inline">\(\epsilon_jb_i=\sigma^n(\epsilon_jb_i)\)</span>.因此<span class="math inline">\(\sigma^n=1\)</span>.</p>
 <h3 id="thm-23"><code>thm 23</code></h3>
 <p>如果<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>上多项式<span class="math inline">\(p(x)=(x^n-a_1)(x^n-a_2)\cdots(x^n-a_n)\)</span>的分裂域,<span class="math inline">\(\forall 1\leq i \leq n,a_i \in F\)</span>,且<span class="math inline">\(F\)</span>包含所有<span class="math inline">\(n\)</span>次单位根,则有以下三个性质成立.</p>
 <ol type="1">
@@ -882,7 +898,9 @@ x_{\sigma}=a(\sigma(a))^{-1}
 <li><span class="math inline">\(G\)</span>中所有元素的阶都是<span class="math inline">\(n\)</span>的因数.</li>
 </ol>
 <ul>
-<li><p>证明:前文已有.</p></li>
+<li><p>证明:对于<span class="math inline">\(F\)</span>的一个库默尔扩张<span class="math inline">\(E\)</span>,<span class="math inline">\(\forall i, x^n-a_i\)</span>没有重根.这可以由<code>thm 19</code>得知.因此,这个库默尔扩张是可分扩张.</p>
+<p>令<span class="math inline">\(b_i\)</span>是方程<span class="math inline">\(x^{n}-a_i\)</span>的根,则对于<span class="math inline">\(n\)</span>次单位根<span class="math inline">\(1, \epsilon_1, \epsilon_2, \cdots, \epsilon_{n-1}\)</span>有<span class="math inline">\(b_i, \epsilon_1b_i, \epsilon_2b_i, \cdots, \epsilon_{n-1}b_i\)</span>均为<span class="math inline">\(x^n-a_i\)</span>的根且它们互不相等. 故它们是这个多项式的所有根.令<span class="math inline">\(\sigma, \tau\)</span>是<span class="math inline">\(E\)</span>上固定<span class="math inline">\(F\)</span>的域,则<span class="math inline">\(\sigma\)</span>和<span class="math inline">\(\tau\)</span>都会把<span class="math inline">\(b_i\)</span>映为某个<span class="math inline">\(\epsilon_{\sigma}b_i\)</span>,且<span class="math inline">\(\sigma\tau(\epsilon_jb_i)=\sigma(\epsilon_\tau \epsilon_jb_i)=\epsilon_\tau\epsilon_\sigma \epsilon_jb_i=\epsilon_\sigma\epsilon_\tau \epsilon_j b_i=\sigma(\tau(\epsilon_j b_i))\)</span>故<span class="math inline">\(E\)</span>在<span class="math inline">\(F\)</span>上的群<span class="math inline">\(G\)</span>是交换群.</p>
+<p><span class="math inline">\(\forall \sigma \in G,\sigma^{k+1}(b_i)=\sigma^k(\epsilon_\sigma b_i)=\epsilon_\sigma(\sigma^{k}(b_i))\)</span>因此<span class="math inline">\(\sigma^n(b_i)=(\epsilon_\sigma)^n\sigma(b_i)=\sigma(b_i)\)</span>.同理可得对于任意<span class="math inline">\(\epsilon_jb_i\)</span>,<span class="math inline">\(\epsilon_jb_i=\sigma^n(\epsilon_jb_i)\)</span>.因此<span class="math inline">\(\sigma^n=1\)</span>.</p></li>
 <li><p>推论:如果<span class="math inline">\(p\)</span>是质数,<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>上多项式<span class="math inline">\(x^p=a\)</span>的分裂域,<span class="math inline">\(F\)</span>包括一个<span class="math inline">\(p\)</span>次本原单位根,则或者<span class="math inline">\(E=F\)</span>,或者<span class="math inline">\(x^p=a\)</span>不可分,<span class="math inline">\(E\)</span>在<span class="math inline">\(F\)</span>上的群是循环群.</p></li>
 </ul>
 <p>接下来我们证明这三个结论是<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>上库默尔扩张的充要条件.</p>
@@ -924,7 +942,10 @@ x_{\sigma}=a(\sigma(a))^{-1}
 <ul>
 <li><p>证明:先证充分性.如果<span class="math inline">\(E=F(\alpha)\)</span>,<span class="math inline">\(\alpha\)</span>在<span class="math inline">\(F\)</span>上的不可约多项式为<span class="math inline">\(f(x)\)</span>,<span class="math inline">\(B\)</span>是<span class="math inline">\(E\)</span>,<span class="math inline">\(F\)</span>上的一个中间域,<span class="math inline">\(g(x)\)</span>是<span class="math inline">\(\alpha\)</span>在<span class="math inline">\(B\)</span>上的不可约多项式,记在<span class="math inline">\(F\)</span>中添加<span class="math inline">\(g(x)\)</span>的系数得到的扩域为<span class="math inline">\(B&#39;\)</span>,则<span class="math inline">\(B&#39;\)</span>是<span class="math inline">\(F\)</span>和<span class="math inline">\(B\)</span>的中间域.<span class="math inline">\(g(x)\)</span>在<span class="math inline">\(B&#39;\)</span>上也是不可约的,因此<span class="math inline">\(E=B&#39;(\alpha)\)</span>,<span class="math inline">\((E/B)=(E/B&#39;)=(E/B)(B/B&#39;)\)</span>.因此<span class="math inline">\(B = B&#39;\)</span>.也就是说,<span class="math inline">\(B\)</span>完全由<span class="math inline">\(g(x)\)</span>确定.而<span class="math inline">\(g(x)\)</span>是<span class="math inline">\(f(x)\)</span>的因式,<span class="math inline">\(g(x)\)</span>只有有限个.中间域也只有有限个.</p>
 <p>假设<span class="math inline">\(E\)</span>和<span class="math inline">\(F\)</span>之间只有有限个中间域,如果<span class="math inline">\(F\)</span>是有限域,那么根据<code>thm 17.5</code>下方的讨论,<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>的本原扩张.</p>
-<p>如果<span class="math inline">\(F\)</span>不是有限域,那么我们将证明<span class="math inline">\(\forall \alpha, \beta \in E, \exists \gamma \in E, F(\alpha, \beta)=F(\gamma)\)</span>.先假设<span class="math inline">\(\gamma = \alpha + k\beta, k \in F\)</span> (<span class="math inline">\(\gamma\)</span>是任取的,所以我们当然可以给<span class="math inline">\(\gamma\)</span>一点限定再继续讨论.)<span class="math inline">\(k\)</span>有无限个取值,而<span class="math inline">\(E\)</span>和<span class="math inline">\(F\)</span>间只有有限个子域,那么存在两个不同的<span class="math inline">\(k_1, k_2\)</span>,记<span class="math inline">\(\gamma_1 = \alpha + k_1\beta\)</span>, <span class="math inline">\(\gamma_2 = \alpha + k_2\beta\)</span>,有<span class="math inline">\(F(\gamma_1)=F(\gamma_2), \gamma_2 \in F(\gamma_1)\)</span>.由<span class="math inline">\(\gamma_1, \gamma_2\)</span>可以表示出<span class="math inline">\(\alpha, \beta\)</span>, 所以<span class="math inline">\(\alpha, \beta \in F(\gamma_1)\)</span>, <span class="math inline">\(F(\alpha, \beta) \subseteq F(\gamma_1).\)</span>而<span class="math inline">\(F(\gamma_1) \subseteq F(\alpha, \beta)\)</span>, 于是<span class="math inline">\(F(\gamma_1)=F(\alpha, \beta)\)</span>.命题得证.假设<span class="math inline">\(E=F(\alpha_1, \alpha_2, \cdots, \alpha_t)\)</span>,则重复使用<span class="math inline">\(F(\alpha, \beta)=F(\gamma)\)</span>可以得到<span class="math inline">\(E=F(\gamma)\)</span>. &gt; 感觉有点不严谨...但是不然就会把论述变得特别冗长.简单是大概就是数学归纳法？</p></li>
+<p>如果<span class="math inline">\(F\)</span>不是有限域,那么我们将证明<span class="math inline">\(\forall \alpha, \beta \in E, \exists \gamma \in E, F(\alpha, \beta)=F(\gamma)\)</span>.先假设<span class="math inline">\(\gamma = \alpha + k\beta, k \in F\)</span> (<span class="math inline">\(\gamma\)</span>是任取的,所以我们当然可以给<span class="math inline">\(\gamma\)</span>一点限定再继续讨论.)<span class="math inline">\(k\)</span>有无限个取值,而<span class="math inline">\(E\)</span>和<span class="math inline">\(F\)</span>间只有有限个子域,那么存在两个不同的<span class="math inline">\(k_1, k_2\)</span>,记<span class="math inline">\(\gamma_1 = \alpha + k_1\beta\)</span>, <span class="math inline">\(\gamma_2 = \alpha + k_2\beta\)</span>,有<span class="math inline">\(F(\gamma_1)=F(\gamma_2), \gamma_2 \in F(\gamma_1)\)</span>.由<span class="math inline">\(\gamma_1, \gamma_2\)</span>可以表示出<span class="math inline">\(\alpha, \beta\)</span>, 所以<span class="math inline">\(\alpha, \beta \in F(\gamma_1)\)</span>, <span class="math inline">\(F(\alpha, \beta) \subseteq F(\gamma_1).\)</span>而<span class="math inline">\(F(\gamma_1) \subseteq F(\alpha, \beta)\)</span>, 于是<span class="math inline">\(F(\gamma_1)=F(\alpha, \beta)\)</span>.命题得证.假设<span class="math inline">\(E=F(\alpha_1, \alpha_2, \cdots, \alpha_t)\)</span>,则重复使用<span class="math inline">\(F(\alpha, \beta)=F(\gamma)\)</span>可以得到<span class="math inline">\(E=F(\gamma)\)</span>.</p>
+<blockquote>
+<p>感觉有点不严谨...但是不然就会把论述变得特别冗长.简单是大概就是数学归纳法？</p>
+</blockquote></li>
 </ul>
 <h3 id="thm-27"><code>thm 27</code></h3>
 <p>记<span class="math inline">\(E\)</span>是<span class="math inline">\(F\)</span>的有限扩域,<span class="math inline">\(\alpha_1, \alpha_2, \cdots, \alpha_n\)</span>为<span class="math inline">\(E\)</span>上的可分元,<span class="math inline">\(E=F(\alpha_1, \alpha_2, \cdots, \alpha_n)\)</span>,则<span class="math inline">\(\exists \theta \in E ,E=F(\theta)\)</span>.</p>
@@ -948,7 +969,10 @@ x_{\sigma}=a(\sigma(a))^{-1}
 <p>记<span class="math inline">\(F\)</span>是一个域,<span class="math inline">\(p(x)\)</span>是<span class="math inline">\(F\)</span>上的多项式,其不可约因式均可分.<span class="math inline">\(E\)</span>是<span class="math inline">\(p(x)\)</span>的分裂域,<span class="math inline">\(B\)</span>是<span class="math inline">\(F\)</span>的任意一个扩域,<span class="math inline">\(E_B\)</span>是<span class="math inline">\(p(x)\)</span>在<span class="math inline">\(B\)</span>上的扩域.如果<span class="math inline">\(p(x)\)</span>在<span class="math inline">\(E_B\)</span>中的根是<span class="math inline">\(\alpha_1, \alpha_2, \cdots, \alpha_n\)</span>,则<span class="math inline">\(F(\alpha_1, \alpha_2, \cdots, \alpha_n)\)</span>是<span class="math inline">\(E_B\)</span>的一个因式且为<span class="math inline">\(p(x)\)</span>在<span class="math inline">\(F\)</span>上的分裂域.由<code>thm 10</code>, <span class="math inline">\(E \cong F(\alpha_1, \alpha_2, \cdots, \alpha_n)\)</span>, 且<span class="math inline">\(E_B \cong B(\alpha_1, \alpha_2, \cdots, \alpha_n)\)</span>.于是我们可以记<span class="math inline">\(E:=F(\alpha_1, \alpha_2, \cdots, \alpha_n), E_B:=B(\alpha_1, \alpha_2, \cdots, \alpha_n)\)</span>.</p>
 <p>若<span class="math inline">\(E \cap B\)</span>为<span class="math inline">\(E\)</span>与<span class="math inline">\(B\)</span>的交集,显然它也是一个域.是<span class="math inline">\(F\)</span>和<span class="math inline">\(E\)</span>的一个中间域.</p>
 <h3 id="thm-29"><code>thm 29</code></h3>
-<p><span class="math inline">\(G\)</span>是<span class="math inline">\(E\)</span>在<span class="math inline">\(F\)</span>上的群,<span class="math inline">\(H\)</span>是<span class="math inline">\(E_B\)</span>在<span class="math inline">\(B\)</span>上的群,则<span class="math inline">\(H\)</span>同构于<span class="math inline">\(G\)</span>中以<span class="math inline">\(E \cap B\)</span>为固定域的元素构成的群. &gt; 在看了一些中文的抽代书之后才发现<code>fixed field</code>应该被翻译成固定域...</p>
+<p><span class="math inline">\(G\)</span>是<span class="math inline">\(E\)</span>在<span class="math inline">\(F\)</span>上的群,<span class="math inline">\(H\)</span>是<span class="math inline">\(E_B\)</span>在<span class="math inline">\(B\)</span>上的群,则<span class="math inline">\(H\)</span>同构于<span class="math inline">\(G\)</span>中以<span class="math inline">\(E \cap B\)</span>为固定域的元素构成的群.</p>
+<blockquote>
+<p>在看了一些中文的抽代书之后才发现<code>fixed field</code>应该被翻译成固定域...</p>
+</blockquote>
 <ul>
 <li><p>证明:假设<span class="math inline">\(\alpha_1, \alpha_2, \cdots, \alpha_n\)</span>中,<span class="math inline">\(\forall i \leq r, \alpha_i \notin B, \forall i &gt; r, \alpha_i \in B\)</span>,则<span class="math inline">\(E_B\)</span>上固定<span class="math inline">\(B\)</span>的自同构<span class="math inline">\(\sigma\)</span>应该是<span class="math inline">\(\alpha_1, \alpha_2, \cdots, \alpha_r\)</span>的一个置换.对于每个这类的同构,都可以保运算的对应到一个<span class="math inline">\(G\)</span>中的同构.而<span class="math inline">\(G\)</span>中的元素<span class="math inline">\(\sigma\)</span>如果要固定<span class="math inline">\(B\)</span>,则固定<span class="math inline">\(E\cap B\)</span>.于是这个单射的像为以<span class="math inline">\(E \cap B\)</span>为固定域的元素构成的群.</p></li>
 <li><p>推论:如果在<code>thm 29</code>的条件下,<span class="math inline">\(G\)</span>的阶数为质数,则<span class="math inline">\(H=G\)</span>或者<span class="math inline">\(H={e}\)</span>.</p></li>
@@ -958,9 +982,72 @@ x_{\sigma}=a(\sigma(a))^{-1}
 </blockquote>
 <h1 id="part-3-群论">Part 3 群论</h1>
 <h2 id="a-可解群">A 可解群</h2>
-<p>在进行关于方程可解性的讨论前,我们需要先讨论群论中几个具体的问题.首先证明几个简单的命题: 1. 若<span class="math inline">\(N\)</span>是<span class="math inline">\(G\)</span>的正规子群,则将<span class="math inline">\(G\)</span>映射到<span class="math inline">\((G/N)\)</span>上的映射的映射<span class="math inline">\(f(x)=xN\)</span>是一个同态. &gt; <span class="math inline">\(f(xy)=xyN\)</span>,<span class="math inline">\(f(x)*f(y)=xNyN=\{xh_1yh_2\}\)</span>, &gt; &gt; <span class="math inline">\(xh_1yh_2=xyh_3h_2 \in xyN\)</span>,<span class="math inline">\(xyh_1=xh_3y \in f(x)*f(y)\)</span> &gt; &gt; 这个映射称为自然同态. 2. 群的正规子群在同态下的像和逆像都是(其像集的)正规子群. &gt; 保乘法. 3. 如果<span class="math inline">\(f\)</span>是一个</p>
+<p>在进行关于方程可解性的讨论前,我们需要先讨论群论中几个具体的问题.首先证明几个简单的命题:</p>
+<ol type="1">
+<li>若<span class="math inline">\(N\)</span>是<span class="math inline">\(G\)</span>的正规子群,则将<span class="math inline">\(G\)</span>映射到<span class="math inline">\((G/N)\)</span>上的映射的映射<span class="math inline">\(f(x)=xN\)</span>是一个同态.</li>
+</ol>
+<blockquote>
+<p><span class="math inline">\(f(xy)=xyN\)</span>,<span class="math inline">\(f(x)*f(y)=xNyN=\{xh_1yh_2\}\)</span>,</p>
+<p><span class="math inline">\(xh_1yh_2=xyh_3h_2 \in xyN\)</span>,<span class="math inline">\(xyh_1=xh_3y \in f(x)*f(y)\)</span></p>
+<p>这个映射称为自然同态.</p>
+</blockquote>
+<ol start="2" type="1">
+<li>群的正规子群在同态下的像和逆像都是(其像集的)正规子群.</li>
+</ol>
+<blockquote>
+<p>保乘法.</p>
+</blockquote>
+<ol start="3" type="1">
+<li><span class="math inline">\(f\)</span>是<span class="math inline">\(G\)</span>到<span class="math inline">\(G&#39;\)</span>的同态映射,<span class="math inline">\(N\)</span>是<span class="math inline">\(G\)</span>的正规子群,<span class="math inline">\(N&#39;=f(N)\)</span>,并定义<span class="math inline">\((G/N)\)</span>到<span class="math inline">\(G&#39;/N&#39;\)</span>的映射<span class="math inline">\(g\)</span>使得<span class="math inline">\(g(xN)=f(x)N&#39;\)</span>,则<span class="math inline">\(g\)</span>是同态映射.且若<span class="math inline">\(f\)</span>是同构映射,则<span class="math inline">\(g\)</span>是同构映射.</li>
+</ol>
+<blockquote>
+<p>显然.</p>
+</blockquote>
+<blockquote>
+<p>虽然读者(如果有的话)大概能推断出来,但是还是写一下定义:集合<span class="math inline">\(A \subset B\)</span>在<span class="math inline">\(B\)</span>到<span class="math inline">\(C\)</span>的映射<span class="math inline">\(f\)</span>下的象集<span class="math inline">\(f(A)=\{f(a)| a \in A\}\)</span>, <span class="math inline">\(D \subset C\)</span>在<span class="math inline">\(f\)</span>的逆象集<span class="math inline">\(f^{-1}(D)=\{d|f(d) \in D\}\)</span>.</p>
+</blockquote>
+<blockquote>
+<p>本章参考<a target="_blank" rel="noopener" href="https://oi-wiki.org/math/algebra/group-theory">OI wiki</a>.因为还没明白Zassenhaus定理(原本的<code>thm 1</code>,但是后面的讨论并不需要用到这个定理)</p>
+</blockquote>
+<blockquote>
+<p>或许我应该解释一下什么是两个群的乘积:<span class="math inline">\(A\)</span>,<span class="math inline">\(B\)</span>是<span class="math inline">\(G\)</span>的子群,则<span class="math inline">\(AB=\{ab|a \in A, b \in B\}\)</span>,如果<span class="math inline">\(A\)</span>,<span class="math inline">\(B\)</span>中任意一个是<span class="math inline">\(G\)</span>的正规子群,<span class="math inline">\(AB\)</span>也是一个群.取<span class="math inline">\(G=U\)</span>,则<span class="math inline">\(u\)</span>是<span class="math inline">\(U\)</span>的正规子群,<span class="math inline">\(U\cap V\)</span>是<span class="math inline">\(U\)</span>的子群.所以<span class="math inline">\(u(U \cap V)\)</span>是一个群.其他几个同理.</p>
+</blockquote>
+<h3 id="thm-1-1"><code>thm 1</code></h3>
+<p>同态基本定理/第一同构定理:如果<span class="math inline">\(f\)</span>是<span class="math inline">\(G\)</span>到<span class="math inline">\(H\)</span>的同态,则<span class="math inline">\(\ker f\)</span>是<span class="math inline">\(G\)</span>的正规子群,且<span class="math inline">\(G/\ker f \cong f(G)\)</span>, <span class="math inline">\(f(G)\)</span>是<span class="math inline">\(H\)</span>的子群.</p>
+<ul>
+<li><p>证明: 方便起见,记<span class="math inline">\(\ker f = V\)</span>,首先证明<span class="math inline">\(V\)</span>是<span class="math inline">\(G\)</span>的正规子群.<span class="math inline">\(\forall v \in V, g \in G, f(g^{-1}vg)=(f(g))^{-1}(f(g))=e_H\)</span>,所以<span class="math inline">\(g(g^{-1}vg)=vg\)</span>,<span class="math inline">\(g^{-1}vg \in V\)</span>.所以<span class="math inline">\(V\)</span>是<span class="math inline">\(G\)</span>的正规子群.</p>
+<p>定义<span class="math inline">\(f(G)\)</span>到<span class="math inline">\(G/V\)</span>的映射<span class="math inline">\(\varphi\)</span>使得<span class="math inline">\(\forall g \in G\)</span>, <span class="math inline">\(\varphi(f(g))=gV\)</span>, 则</p>
+<ol type="1">
+<li><p>这个映射是良定义的.因为<span class="math inline">\(\forall h_1, h_2 \in H\)</span>, <span class="math inline">\(f(h_1)=f(h_2)\)</span>当且仅当<span class="math inline">\(h_1(h_2)^{-1}=v\in V\)</span>, 此时<span class="math inline">\(h_2V=(h_1v)V=h_1V\)</span>.</p></li>
+<li><p>这个映射是同态映射,因为<span class="math inline">\(f\)</span>是同态映射.</p></li>
+<li><p>这个映射是同构映射.若<span class="math inline">\(h_1V=h_2V\)</span>,则对于<span class="math inline">\(v \in V\)</span>,$ v' V<span class="math inline">\(,\)</span>h_1v=h_2v'<span class="math inline">\(,\)</span>h_2=h_1v(v')^{-1}<span class="math inline">\(,\)</span>f(h_1)=f(h_2)<span class="math inline">\(.且\)</span>xV G/V<span class="math inline">\(,\)</span>x G<span class="math inline">\(, 有\)</span>(f(x))=x(V)<span class="math inline">\(.所以\)</span>$是同态映射.</p></li>
+</ol>
+<p>因此,<span class="math inline">\(f(G) \cong G/V=G/\ker f\)</span>.</p></li>
+<li><p>推论1(第二同构定理): 若<span class="math inline">\(H\)</span>是<span class="math inline">\(G\)</span>的子群,<span class="math inline">\(N\)</span>是<span class="math inline">\(G\)</span>的正规子群,则<span class="math inline">\(H/(H\cap N) \cong HN / N\)</span>,</p>
+<ul>
+<li>证明:首先,<span class="math inline">\(\forall h \in H, n \in N\)</span>, $ hn G$, <span class="math inline">\(hnN=Nhn \in G/N\)</span>,所以<span class="math inline">\(HN/N\)</span>是群.所以<span class="math inline">\(HN/N\)</span>是<span class="math inline">\(G/N\)</span>的子群.定义<span class="math inline">\(H\)</span>到<span class="math inline">\(HN/N\)</span>上的映射<span class="math inline">\(\varphi:\varphi(h)=hN\)</span>,<span class="math inline">\(h \in H\)</span>.则<span class="math inline">\((H\cap N)=\ker \varphi\)</span>.由第一同构定理,推论1得证.</li>
+</ul></li>
+<li><p>推论2:如果在推论1的条件下,<span class="math inline">\(G/N\)</span>是阿贝尔群,则<span class="math inline">\(H/H\cap N\)</span>也是阿贝尔群.</p></li>
+</ul>
+<p>一个群<span class="math inline">\(G\)</span>是可解群,如果它可以被分解成形如<span class="math inline">\(G=G_0 \supset G_1 \supset \cdots \supset G_s = \{e\}\)</span>的群链,其中<span class="math inline">\(\forall 0 \leq i &lt; s\)</span>, <span class="math inline">\(G_{i+1}\)</span>是<span class="math inline">\(G_i\)</span>的正规子群,且<span class="math inline">\(G_i / G_{i+1}\)</span>为阿贝尔群.</p>
+<h3 id="thm-2"><code>thm 2</code></h3>
+<p>可解群的任意子群也是可解群.</p>
+<ul>
+<li>证明: 记这个可解群为<span class="math inline">\(G\)</span>,<span class="math inline">\(H\)</span>是其子群,<span class="math inline">\(G\)</span>的可解群链是<span class="math inline">\(G=G_0 \supset G_1 \supset \cdots \supset G_s = \{e\}\)</span>,则令<span class="math inline">\(H_i=G_i\cap H\)</span>,则由推论1可知<span class="math inline">\(H_{i+1}\)</span>是<span class="math inline">\(H_i\)</span>的正规子群.且由于<span class="math inline">\(G_i/G_{i+1}\)</span>是交换群, <span class="math inline">\(H_i/H_{i+1}\)</span>是交换群.命题得证.</li>
+</ul>
+<blockquote>
+<p>看的一头雾水?其实就是把第二同构定理中的<span class="math inline">\(G\)</span>换成<span class="math inline">\(G_i\)</span>,<span class="math inline">\(H\)</span>换成<span class="math inline">\(G_{i+1}\)</span>.</p>
+</blockquote>
+<h3 id="thm-3"><code>thm 3</code></h3>
+<p>可解群的同态也是可解群.</p>
+<ul>
+<li>证明: 记这个可解群为<span class="math inline">\(G\)</span>,存在另一群<span class="math inline">\(H\)</span>到<span class="math inline">\(G\)</span>的同态<span class="math inline">\(f\)</span>,<span class="math inline">\(G\)</span>的可解群链是<span class="math inline">\(G=G_0 \supset G_1 \supset \cdots \supset G_s = \{e\}\)</span>,则<span class="math inline">\(f(G_{i+1})\)</span>是<span class="math inline">\(f(G_i)\)</span>的正规子群,这就是前面的&quot;简单的命题-2&quot;.且<span class="math inline">\(f(G_i)/f(G_{i+1})\)</span>是<span class="math inline">\(G_i/G_{i+1}\)</span>的同态.自然也就是交换群.命题得证.</li>
+</ul>
 <h2 id="b-置换群">B 置换群</h2>
-<p>假设<span class="math inline">\(Z_n\)</span>是某个有<span class="math inline">\(n\)</span>个元素的集合, <span class="math inline">\(Z_n\)</span>到<span class="math inline">\(Z_n\)</span>的一一对应<span class="math inline">\(f\)</span>称作<span class="math inline">\(Z_n\)</span>的一个置换.两个这样的置换的复合称作置换的乘法.<span class="math inline">\(Z_n\)</span>的所有置换构成一个群.称为<span class="math inline">\(n\)</span>次对称群<span class="math inline">\(S_n\)</span>. &gt; 注意.<span class="math inline">\(n\)</span>次对称群有<span class="math inline">\(n!\)</span>个元素,而不是<span class="math inline">\(n\)</span>个.</p>
+<p>假设<span class="math inline">\(Z_n\)</span>是某个有<span class="math inline">\(n\)</span>个元素的集合, <span class="math inline">\(Z_n\)</span>到<span class="math inline">\(Z_n\)</span>的一一对应<span class="math inline">\(f\)</span>称作<span class="math inline">\(Z_n\)</span>的一个置换.两个这样的置换的复合称作置换的乘法.<span class="math inline">\(Z_n\)</span>的所有置换构成一个群.称为<span class="math inline">\(n\)</span>次对称群<span class="math inline">\(S_n\)</span>.</p>
+<blockquote>
+<p>注意.<span class="math inline">\(n\)</span>次对称群有<span class="math inline">\(n!\)</span>个元素,而不是<span class="math inline">\(n\)</span>个.</p>
+</blockquote>
 <p>不妨设<span class="math inline">\(Z_n=\{i|i \in \mathbb N_+, i \leq n\}\)</span>,定义轮换<span class="math inline">\((a_1, a_2, \cdots, a_r)\)</span>为这样一个置换<span class="math inline">\(f\)</span>:<span class="math inline">\(\forall i \in Z_n\)</span>,若<span class="math inline">\(\exists j, i = a_j\)</span>,则<span class="math inline">\(f(i)=a_{j\%n+1}\)</span>,我们称这个轮换为<span class="math inline">\(r\)</span>循环.显然,<span class="math inline">\(f^{-1}=(a_r, a_{r-1}, \cdots, a_1)\)</span>.</p>
 <h3 id="thm-3.5"><code>thm 3.5</code></h3>
 <p>如果<span class="math inline">\(S_n\)</span>的子群<span class="math inline">\(G\)</span>包含所有3循环,<span class="math inline">\(n \geq 5\)</span>,<span class="math inline">\(H\)</span>是<span class="math inline">\(G\)</span>的正规子群,<span class="math inline">\(G/H\)</span>是阿贝尔群,则<span class="math inline">\(H\)</span>也包含3循环.</p>
@@ -972,7 +1059,7 @@ x_{\sigma}=a(\sigma(a))^{-1}
 </ul>
 <h2 id="c-用根式解方程">C 用根式解方程</h2>
 <p><span class="math inline">\(F\)</span>的扩域<span class="math inline">\(E\)</span>被称为根式扩张,如果存在一系列中间域<span class="math inline">\(B_0, B_1, B_2, \cdots, B_r\)</span>使得<span class="math inline">\(B_0 =F, B_r=E\)</span>,<span class="math inline">\(B_i=B_{i-1}(\alpha_i)\)</span>,其中<span class="math inline">\(\alpha_i\)</span>是<span class="math inline">\(x^{n_i}-a_i=0(a_i \in B_{i-1})\)</span>的解.</p>
-<p><span class="math inline">\(F\)</span>上多项式<span class="math inline">\(f(x)\)</span>可以用根式解定义为<span class="math inline">\(f(x)\)</span>的分裂与包含于<span class="math inline">\(F\)</span>的某个根式扩张.</p>
+<p><span class="math inline">\(F\)</span>上多项式<span class="math inline">\(f(x)\)</span>可以用根式解定义为<span class="math inline">\(f(x)\)</span>的分裂域包含于<span class="math inline">\(F\)</span>的某个根式扩张.</p>
 <p>除非特殊指出,我们默认<span class="math inline">\(F\)</span>是特征为0的域,且包含所有可能用到的n次单位根.</p>
 <blockquote>
 <p>有点奇怪?其实也没那么奇怪.毕竟我们也不会认为解析式中出现<span class="math inline">\(\mathrm i\)</span>属于还没得到根式解,那出现<span class="math inline">\(\zeta_3\)</span>也没什么吧?毕竟开方运算在复数域内有多解性.</p>
@@ -987,6 +1074,37 @@ x_{\sigma}=a(\sigma(a))^{-1}
 <blockquote>
 <p>写这段的时候感觉特别优美.<code>thm 16</code>和<code>thm 23</code>,<code>thm 25</code>交织在一起.</p>
 </blockquote>
+<h2 id="d-一元五次方程">D 一元五次方程</h2>
+<blockquote>
+<p>这段基本参照的是<a target="_blank" rel="noopener" href="https://chaoli.club/index.php/5043">这个网站</a>.因为Artin 的<Galois Theory>中讲这一章的部分我看不懂.</p>
+</blockquote>
+<blockquote>
+<p>终于.</p>
+</blockquote>
+<h3 id="thm-6"><code>thm 6</code></h3>
+<p><span class="math inline">\(F\)</span>是一个域,<span class="math inline">\(E=F(z_1, \cdots, z_n)\)</span>是<span class="math inline">\(F\)</span>的有限扩张,<span class="math inline">\(E\)</span>在<span class="math inline">\(F\)</span>上的群为<span class="math inline">\(G\)</span>,若<span class="math inline">\(\sigma \in G, \forall i, \sigma(z_i)\)</span>,则<span class="math inline">\(\forall x \in E, \sigma(x)=x\)</span>.</p>
+<ul>
+<li><p>证明:我们使用归纳法证明这个定理.当<span class="math inline">\(n=1\)</span>,<span class="math inline">\(\forall u \in E,u=f(z_1)\)</span>(<span class="math inline">\(f\)</span>是<span class="math inline">\(K\)</span>上的多项式).<span class="math inline">\(E\)</span>在<span class="math inline">\(F\)</span>上的一组基为<span class="math inline">\((1,z_1, z^2_1,\cdots,z_1^n)\)</span>由于<span class="math inline">\(\sigma(z^i_1)=(\sigma(z_1))^i=z_1^i\)</span>,<span class="math inline">\(\sigma\)</span>固定<span class="math inline">\(E\)</span>.</p>
+<p>若此定理对<span class="math inline">\(E&#39;=F(z_1, \cdots, z_n)\)</span>成立,则<span class="math inline">\(E=E&#39;(z_{n+1})=F(z_1, \cdots, z_n, z_{n+1})\)</span>,<span class="math inline">\(G\)</span>是<span class="math inline">\(E\)</span>在<span class="math inline">\(F\)</span>上的群,<span class="math inline">\(G&#39;\)</span>是<span class="math inline">\(E\)</span>在<span class="math inline">\(E&#39;\)</span>上的群,若<span class="math inline">\(\sigma \in G, \sigma(z_i)=z_i\)</span>,则<span class="math inline">\(\sigma \in G&#39;\)</span>.此时应用归纳假设可证.</p></li>
+</ul>
+<h3 id="thm-7"><code>thm 7</code></h3>
+<p>如果<span class="math inline">\(f\)</span>为<span class="math inline">\(K\)</span>上的一元<span class="math inline">\(n\)</span>次函数,<span class="math inline">\(E\)</span>为<span class="math inline">\(f\)</span>在<span class="math inline">\(K\)</span>上的分裂域,则它的Galois群同构于<span class="math inline">\(S_n\)</span>的一个子群.</p>
+<ul>
+<li>证明:记<span class="math inline">\(f\)</span>在<span class="math inline">\(E\)</span>上的根为<span class="math inline">\(\alpha_1, \alpha_2, \cdots, \alpha_n\)</span>,<span class="math inline">\(E\)</span>在<span class="math inline">\(K\)</span>上的群<span class="math inline">\(G\)</span>,每个<span class="math inline">\(\sigma \in G\)</span>可以对应为<span class="math inline">\(\alpha_1, \alpha_2, \cdots, \alpha_n\)</span>的一个置换(因为<span class="math inline">\(\sigma(\alpha_i)\)</span>是<span class="math inline">\(f(x)\)</span>的一个根).也就是<span class="math inline">\(S_n\)</span>的一个元素.同时如果两个映射<span class="math inline">\(\sigma, \tau \in G_n\)</span>,<span class="math inline">\(\forall i, \sigma(\alpha_i)=\tau(\alpha_i)\)</span>,则<span class="math inline">\(\forall x \in E\)</span>,$ (x)=(x)<span class="math inline">\(.这是因为\)</span>^{-1}(x)<span class="math inline">\(对于所有\)</span>_i<span class="math inline">\(保持不变.于是\)</span>^{-1}((x))=x<span class="math inline">\(,\)</span>(x)=(x)$.</li>
+</ul>
+<h3 id="thm-8"><code>thm 8</code></h3>
+<p>Abel-Ruffini定理:<span class="math inline">\(K\)</span>是一个域,<span class="math inline">\(E=K(y_1, y_2, \cdots, y_n)=\{a\sum\limits_{i=1}^n(x-y_i)\}\)</span>是<span class="math inline">\(K\)</span>上所有<span class="math inline">\(n\)</span>元函数域.则当<span class="math inline">\(n \geq 5\)</span>时,方程在<span class="math inline">\(k\)</span>上无求根公式.</p>
+<ul>
+<li><p>证明:将<span class="math inline">\(f(x)\)</span>写成<span class="math inline">\(x^n+\sum\limits_{i=0}^{n-1}a_ix^i\)</span>,则<span class="math inline">\(E\)</span>是<span class="math inline">\(f(x)\)</span>在域<span class="math inline">\(F=K(\alpha_0, \alpha_1, \cdots, \alpha_{n-1})\)</span>上的分裂域.<span class="math inline">\(E\)</span>在<span class="math inline">\(F\)</span>上的群记为<span class="math inline">\(G\)</span>,下证<span class="math inline">\(G \cong S_n\)</span>.</p>
+<p>注意到,每个<span class="math inline">\(S_n\)</span>的元素<span class="math inline">\(\sigma\)</span>可以将<span class="math inline">\(y_1, y_2, \cdots, y_n\)</span>置换为<span class="math inline">\(y_{\sigma(1)}, y_{\sigma(2)}, \cdots, y_{\sigma(n)}\)</span>.设<span class="math inline">\(E&#39;=F(y_{\sigma(1)}, y_{\sigma(2)}, \cdots, y_{\sigma(n)})\)</span>,则存在<span class="math inline">\(E\)</span>到<span class="math inline">\(E&#39;\)</span>的同构<span class="math inline">\(\sigma&#39;\)</span>(这是前面的哪个定理来着?忘记了).而<span class="math inline">\(\sigma&#39;\)</span>是固定<span class="math inline">\(F\)</span>的,<span class="math inline">\(E\)</span>的自同构.于是我们现在构造出了一个<span class="math inline">\(\sigma\)</span>到<span class="math inline">\(\sigma&#39;\)</span>的同态(?)映射.由<code>thm 7</code>,这是一个满射.由<code>thm 6</code>,这是一个单射.故这是一个同构映射.</p></li>
+</ul>
+<blockquote>
+<p>注:此处的&quot;无根式解&quot;指的是没有根式的求根公式,而不是所有的5次及以上多项式都无根式解.比如<span class="math inline">\((x-1)(x-2)(x-3)(x-4)(x-5)\)</span>有明显的根式解.事实上,可以直接构造出自同构群为<span class="math inline">\(S_5\)</span>的多项式.只要这个既约多项式有3个实根和两个虚根.</p>
+</blockquote>
+<blockquote>
+<p>完结.剩下的就是整理之前遗漏的一些内容和规范用语了.</p>
+</blockquote>
+<p>接下来的任务: 1. 完成前面的Part 0, Part 1. 2. 搞好标号. 3. 把文中的&quot;正规扩张&quot;改回&quot;Galois扩张&quot;.扩域在域上的群也改回&quot;Galois群&quot;. 4. 其他修订.</p>
 
           
         
